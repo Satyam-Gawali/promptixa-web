@@ -1,0 +1,192 @@
+/* Root CSS for Promptixa Official Website */
+:root {
+  --bg-color: #090e1a;
+  --card-bg: #111827;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --accent-color: #3b82f6;
+  --accent-hover: #2563eb;
+  --border-color: #1f2937;
+  --transition-speed: 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  background-color: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.025em;
+  color: var(--text-main);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.925rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.hero-container h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+}
+
+.hero-container .tagline {
+  font-size: 1.2rem;
+  color: var(--text-main);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.hero-container .sub-description {
+  color: var(--text-muted);
+  font-size: 1rem;
+  max-width: 700px;
+  margin-bottom: 1.75rem;
+}
+
+.app-info-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.5rem;
+  max-width: 500px;
+}
+
+.app-info-card strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+  color: var(--text-main);
+}
+
+.app-info-card p {
+  color: var(--text-muted);
+  font-size: 0.925rem;
+}
+
+.links-container h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.legal-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.legal-links-list li a {
+  display: inline-block;
+  color: var(--text-main);
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  transition: all var(--transition-speed);
+}
+
+.legal-links-list li a:hover {
+  border-color: var(--accent-color);
+  text-decoration: none;
+  transform: translateX(4px);
+}
+
+.site-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .hero-container h1 {
+    font-size: 2rem;
+  }
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
