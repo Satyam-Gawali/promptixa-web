@@ -1,4 +1,10 @@
-/* Promptixa Help Center Stylesheet - Fully Adaptive & Responsive */
+/* Promptixa Help Center Stylesheet - Fully Adaptive, Responsive & System Theme-Aware */
+
+/* ==========================================================================
+   Theme Variables & Automatic System Theme Switching
+   ========================================================================== */
+
+/* Default / Dark Theme (System Dark Mode) */
 :root {
   --bg-color: #090e1a;
   --card-bg: #111827;
@@ -19,14 +25,96 @@
   --danger-light: rgba(239, 68, 68, 0.12);
   --border-color: #1f2937;
   --border-subtle: #2d3748;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --header-bg: rgba(9, 14, 26, 0.88);
+  --category-nav-bg: rgba(9, 14, 26, 0.95);
+  --hero-bg: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.16) 0%, rgba(9, 14, 26, 0) 72%);
+  --hero-gradient-text: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #93c5fd 100%);
+  --notice-bg: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(17, 24, 39, 0.9) 100%);
+  --simulator-bg: linear-gradient(145deg, #111827 0%, #172033 100%);
+  --sim-input-focus: #0c1222;
+  --sim-preview-mark-bg: rgba(59, 130, 246, 0.25);
+  --sim-preview-mark-color: #93c5fd;
+  --article-body-bg: #0c1220;
+  --callout-info-bg: rgba(59, 130, 246, 0.12);
+  --callout-info-color: #bfdbfe;
+  --callout-info-border: rgba(59, 130, 246, 0.35);
+  --callout-tip-bg: rgba(16, 185, 129, 0.12);
+  --callout-tip-color: #a7f3d0;
+  --callout-tip-border: rgba(16, 185, 129, 0.3);
+  --callout-warning-bg: rgba(245, 158, 11, 0.12);
+  --callout-warning-color: #fde68a;
+  --callout-warning-border: rgba(245, 158, 11, 0.35);
+  --callout-important-bg: rgba(239, 68, 68, 0.1);
+  --callout-important-color: #fca5a5;
+  --callout-important-border: rgba(239, 68, 68, 0.35);
+  --contact-bg: linear-gradient(145deg, #111827 0%, #151e30 100%);
+  --footer-bg: #070b14;
+  --footer-text: #9ca3af;
+  --footer-border: #1f2937;
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+/* Polished Light Theme (System Light Mode) */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --card-bg-elevated: #f1f5f9;
+    --card-bg-hover: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --text-dim: #64748b;
+    --accent-color: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-light: rgba(37, 99, 235, 0.08);
+    --accent-border: rgba(37, 99, 235, 0.25);
+    --success-color: #059669;
+    --success-light: rgba(5, 150, 105, 0.08);
+    --warning-color: #d97706;
+    --warning-light: rgba(217, 119, 6, 0.08);
+    --danger-color: #dc2626;
+    --danger-light: rgba(220, 38, 38, 0.08);
+    --border-color: #e2e8f0;
+    --border-subtle: #cbd5e1;
+    --header-bg: rgba(255, 255, 255, 0.92);
+    --category-nav-bg: rgba(248, 250, 252, 0.95);
+    --hero-bg: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.09) 0%, rgba(248, 250, 252, 0) 75%), #ffffff;
+    --hero-gradient-text: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+    --notice-bg: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+    --simulator-bg: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    --sim-input-focus: #ffffff;
+    --sim-preview-mark-bg: rgba(37, 99, 235, 0.14);
+    --sim-preview-mark-color: #1d4ed8;
+    --article-body-bg: #f8fafc;
+    --callout-info-bg: #eff6ff;
+    --callout-info-color: #1e40af;
+    --callout-info-border: #bfdbfe;
+    --callout-tip-bg: #f0fdf4;
+    --callout-tip-color: #166534;
+    --callout-tip-border: #bbf7d0;
+    --callout-warning-bg: #fffbeb;
+    --callout-warning-color: #92400e;
+    --callout-warning-border: #fde68a;
+    --callout-important-bg: #fef2f2;
+    --callout-important-color: #991b1b;
+    --callout-important-border: #fecaca;
+    --contact-bg: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+    --footer-bg: #f1f5f9;
+    --footer-text: #64748b;
+    --footer-border: #e2e8f0;
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    color-scheme: light;
+  }
 }
 
 *, *::before, *::after {
@@ -55,6 +143,7 @@ body {
   width: 100%;
   word-break: break-word;
   overflow-wrap: break-word;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 button,
@@ -79,7 +168,7 @@ a {
 }
 
 a:hover {
-  color: #60a5fa;
+  color: var(--accent-hover);
   text-decoration: underline;
 }
 
@@ -88,13 +177,14 @@ a:hover {
    ========================================================================== */
 .site-header {
   border-bottom: 1px solid var(--border-color);
-  background-color: rgba(9, 14, 26, 0.88);
+  background-color: var(--header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 100;
   width: 100%;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .header-container {
@@ -206,7 +296,7 @@ a:hover {
 .help-hero {
   text-align: center;
   padding: 2.25rem 1.25rem 1.75rem;
-  background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.16) 0%, rgba(9, 14, 26, 0) 72%);
+  background: var(--hero-bg);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
   display: flex;
@@ -214,6 +304,8 @@ a:hover {
   align-items: center;
   gap: 1.15rem;
   width: 100%;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
 }
 
 .hero-pill {
@@ -240,10 +332,11 @@ a:hover {
   letter-spacing: -0.03em;
   line-height: 1.2;
   max-width: 750px;
+  color: var(--text-main);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #93c5fd 100%);
+  background: var(--hero-gradient-text);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -390,6 +483,7 @@ a:hover {
   flex-wrap: wrap;
   gap: 0.5rem;
   font-size: 0.875rem;
+  color: var(--text-main);
 }
 
 .search-results-indicator span strong {
@@ -406,7 +500,7 @@ a:hover {
   justify-content: center;
   padding: 0.3rem 0.65rem;
   border-radius: var(--radius-sm);
-  background-color: rgba(59, 130, 246, 0.12);
+  background-color: var(--accent-light);
   border: 1px solid var(--accent-border);
   font-family: inherit;
   transition: var(--transition);
@@ -415,8 +509,8 @@ a:hover {
 
 .reset-filter-link:hover {
   text-decoration: none;
-  background-color: rgba(59, 130, 246, 0.25);
-  color: #93c5fd;
+  background-color: var(--accent-border);
+  color: #ffffff;
 }
 
 /* Clarification Banner */
@@ -424,11 +518,12 @@ a:hover {
   display: flex;
   gap: 0.85rem;
   padding: 1.1rem 1.25rem;
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(17, 24, 39, 0.9) 100%);
+  background: var(--notice-bg);
   border: 1px solid var(--border-subtle);
   border-left: 4px solid var(--accent-color);
   border-radius: var(--radius-md);
   align-items: flex-start;
+  box-shadow: var(--shadow-sm);
 }
 
 .notice-icon {
@@ -457,13 +552,14 @@ a:hover {
   position: sticky;
   top: 54px;
   z-index: 90;
-  background-color: rgba(9, 14, 26, 0.95);
+  background-color: var(--category-nav-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 0.65rem 0;
   border-bottom: 1px solid var(--border-color);
   margin: -1rem 0 0.5rem;
   width: 100%;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .category-tabs {
@@ -561,6 +657,7 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
   position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
 .topic-card:hover,
@@ -617,14 +714,14 @@ a:hover {
   color: var(--accent-color);
   font-weight: 500;
   padding-top: 0.45rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-color);
 }
 
 /* ==========================================================================
    Interactive Variable Simulator
    ========================================================================== */
 .simulator-card {
-  background: linear-gradient(145deg, #111827 0%, #172033 100%);
+  background: var(--simulator-bg);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
@@ -701,13 +798,13 @@ a:hover {
 .sim-field-group label code {
   color: var(--accent-color);
   font-weight: 700;
-  background: var(--card-bg);
+  background: var(--card-bg-elevated);
   padding: 0.1rem 0.3rem;
   border-radius: 4px;
 }
 
 .sim-input {
-  background-color: var(--bg-color);
+  background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   padding: 0.6rem 0.75rem;
@@ -721,11 +818,12 @@ a:hover {
 .sim-input:focus {
   outline: none;
   border-color: var(--accent-color);
-  background-color: #0c1222;
+  background-color: var(--sim-input-focus);
+  box-shadow: 0 0 0 2px var(--accent-light);
 }
 
 .sim-preview-box {
-  background-color: var(--bg-color);
+  background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   padding: 0.95rem;
@@ -745,8 +843,8 @@ a:hover {
 }
 
 .sim-preview-text mark {
-  background-color: rgba(59, 130, 246, 0.25);
-  color: #93c5fd;
+  background-color: var(--sim-preview-mark-bg);
+  color: var(--sim-preview-mark-color);
   padding: 0.1rem 0.3rem;
   border-radius: 3px;
   font-weight: 500;
@@ -852,6 +950,7 @@ details.article-accordion,
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   scroll-margin-top: 120px;
   width: 100%;
+  box-shadow: var(--shadow-sm);
 }
 
 details.article-accordion:hover,
@@ -941,7 +1040,7 @@ details[open] > summary .article-expand-icon,
 .article-body {
   padding: 1.15rem;
   border-top: 1px solid var(--border-color);
-  background-color: #0c1220;
+  background-color: var(--article-body-bg);
   font-size: 0.875rem;
   color: var(--text-muted);
   line-height: 1.65;
@@ -1003,9 +1102,9 @@ details[open] > summary .article-expand-icon,
 }
 
 .callout.info {
-  background-color: var(--accent-light);
-  border: 1px solid var(--accent-border);
-  color: #bfdbfe;
+  background-color: var(--callout-info-bg);
+  border: 1px solid var(--callout-info-border);
+  color: var(--callout-info-color);
 }
 
 .callout.info .callout-icon {
@@ -1013,9 +1112,9 @@ details[open] > summary .article-expand-icon,
 }
 
 .callout.tip {
-  background-color: var(--success-light);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #a7f3d0;
+  background-color: var(--callout-tip-bg);
+  border: 1px solid var(--callout-tip-border);
+  color: var(--callout-tip-color);
 }
 
 .callout.tip .callout-icon {
@@ -1023,9 +1122,9 @@ details[open] > summary .article-expand-icon,
 }
 
 .callout.warning {
-  background-color: var(--warning-light);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  color: #fde68a;
+  background-color: var(--callout-warning-bg);
+  border: 1px solid var(--callout-warning-border);
+  color: var(--callout-warning-color);
 }
 
 .callout.warning .callout-icon {
@@ -1033,9 +1132,9 @@ details[open] > summary .article-expand-icon,
 }
 
 .callout.important {
-  background-color: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.35);
-  color: #fca5a5;
+  background-color: var(--callout-important-bg);
+  border: 1px solid var(--callout-important-border);
+  color: var(--callout-important-color);
 }
 
 .callout.important .callout-icon {
@@ -1125,7 +1224,7 @@ details[open] > summary .article-expand-icon,
    Support & Contact Section
    ========================================================================== */
 .contact-section {
-  background: linear-gradient(145deg, #111827 0%, #151e30 100%);
+  background: var(--contact-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 1.75rem 1.25rem;
@@ -1133,6 +1232,7 @@ details[open] > summary .article-expand-icon,
   flex-direction: column;
   gap: 1.25rem;
   width: 100%;
+  box-shadow: var(--shadow-sm);
 }
 
 .contact-header {
@@ -1147,6 +1247,7 @@ details[open] > summary .article-expand-icon,
   font-size: clamp(1.25rem, 3.5vw, 1.5rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  color: var(--text-main);
 }
 
 .contact-header p {
@@ -1174,6 +1275,7 @@ details[open] > summary .article-expand-icon,
   gap: 0.65rem;
   text-align: center;
   align-items: center;
+  box-shadow: var(--shadow-sm);
 }
 
 .channel-icon-wrap {
@@ -1270,12 +1372,13 @@ details[open] > summary .article-expand-icon,
    Footer
    ========================================================================== */
 .site-footer {
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--footer-border);
   padding: 2.25rem 1.25rem 1.75rem;
-  background-color: #070b14;
-  color: var(--text-muted);
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
   font-size: 0.825rem;
   width: 100%;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .footer-container {
