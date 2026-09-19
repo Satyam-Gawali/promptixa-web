@@ -2,92 +2,551 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Promptixa: AI Prompt Community | Discover & Manage Prompts</title>
-  <meta name="description" content="Promptixa: AI Prompt Community by Satyam Studios - Discover, save, and use ready-to-use prompts for your everyday needs.">
-  <meta name="keywords" content="Promptixa, AI Prompt Community, prompts app, Satyam Studios, prompt manager">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Promptixa: AI Prompt Community — Discover, Customize & Export Prompts</title>
+  <meta name="description" content="Discover curated AI prompts for coding, writing, and productivity. Customize dynamic variables and export seamlessly to ChatGPT and Google Gemini.">
+  <meta name="keywords" content="Promptixa, AI Prompt Community, AI prompts, prompt library, prompt templates, ChatGPT prompts, Gemini prompts, customize prompts">
   <meta name="author" content="Satyam Studios">
-  <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#090e1a">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  
+  <!-- System Theme & Color Scheme -->
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#090e1a">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc">
+  <meta name="color-scheme" content="dark light">
   <meta name="application-name" content="Promptixa: AI Prompt Community">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
   <link rel="canonical" href="https://satyam-gawali.github.io/promptixa-web/">
-  <meta property="og:title" content="Promptixa: AI Prompt Community | Discover & Manage Prompts">
-  <meta property="og:description" content="Discover, save, and use ready-to-use prompts for your everyday needs.">
-  <meta property="og:url" content="https://satyam-gawali.github.io/promptixa-web/">
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Promptixa: AI Prompt Community">
+  <meta property="og:title" content="Promptixa: AI Prompt Community — Discover, Customize & Export Prompts">
+  <meta property="og:description" content="Discover curated AI prompts for coding, writing, and productivity. Customize dynamic variables and export seamlessly to ChatGPT and Google Gemini.">
+  <meta property="og:url" content="https://satyam-gawali.github.io/promptixa-web/">
+  <meta property="og:image" content="https://satyam-gawali.github.io/promptixa-web/assets/icons/web-app-manifest-512x512.png">
+  <meta property="og:image:secure_url" content="https://satyam-gawali.github.io/promptixa-web/assets/icons/web-app-manifest-512x512.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Promptixa App Logo and AI Prompt Community Icon">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Promptixa: AI Prompt Community | Discover & Manage Prompts">
-  <meta name="twitter:description" content="Promptixa: AI Prompt Community by Satyam Studios.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Promptixa: AI Prompt Community","url":"https://satyam-gawali.github.io/promptixa-web/"}</script>
-  
+  <meta name="twitter:title" content="Promptixa: AI Prompt Community — Discover, Customize & Export Prompts">
+  <meta name="twitter:description" content="Discover curated AI prompts for coding, writing, and productivity. Customize dynamic variables and export seamlessly to ChatGPT and Google Gemini.">
+  <meta name="twitter:image" content="https://satyam-gawali.github.io/promptixa-web/assets/icons/web-app-manifest-512x512.png">
+  <meta name="twitter:image:alt" content="Promptixa App Icon">
+
+  <!-- Favicons & App Manifest -->
   <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/icons/favicon-96x96.png" type="image/png" sizes="96x96">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="assets/icons/site.webmanifest">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Structured Data / JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://satyam-gawali.github.io/promptixa-web/#organization",
+        "name": "Satyam Studios",
+        "url": "https://satyam-gawali.github.io/promptixa-web/",
+        "logo": "https://satyam-gawali.github.io/promptixa-web/assets/icons/web-app-manifest-512x512.png",
+        "email": "satyamstudios.dev@gmail.com"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://satyam-gawali.github.io/promptixa-web/#website",
+        "url": "https://satyam-gawali.github.io/promptixa-web/",
+        "name": "Promptixa: AI Prompt Community",
+        "description": "Curated and community-driven AI prompt discovery, customization, and library platform.",
+        "inLanguage": "en-US",
+        "publisher": {
+          "@id": "https://satyam-gawali.github.io/promptixa-web/#organization"
+        }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://satyam-gawali.github.io/promptixa-web/#app",
+        "name": "Promptixa: AI Prompt Community",
+        "operatingSystem": "Android",
+        "applicationCategory": "ProductivityApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.promptixa.app",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.promptixa.app",
+        "description": "Discover high-performance AI prompts, customize dynamic variables, and launch prompts directly into ChatGPT and Google Gemini.",
+        "publisher": {
+          "@id": "https://satyam-gawali.github.io/promptixa-web/#organization"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Typography & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+  <!-- Site Navigation Header (Sticky) -->
   <header class="site-header">
     <div class="header-container">
       <div class="brand">
-        <span class="brand-name">Promptixa</span>
+        <a href="index.html" class="brand-link" aria-label="Promptixa Home">
+          <img src="assets/icons/favicon-96x96.png" alt="Promptixa Logo Icon" class="brand-logo-icon" width="28" height="28">
+          <span class="brand-name">Promptixa</span>
+        </a>
       </div>
-      <nav class="site-nav">
-        <a href="index.html" class="active">Home</a>
+      <nav class="site-nav" aria-label="Main Navigation">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#showcase">Showcase</a>
         <a href="help/">Help Center</a>
-        <a href="legal/privacy.html">Privacy</a>
-        <a href="legal/terms.html">Terms</a>
-        <a href="legal/account-deletion.html">Account Deletion</a>
+        <a href="https://play.google.com/store/apps/details?id=com.promptixa.app" target="_blank" rel="noopener" class="nav-cta-btn">
+          Get App
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
       </nav>
     </div>
   </header>
 
-  <main class="main-content">
-    <section class="hero-section">
-      <div class="hero-container">
-        <h1>Promptixa</h1>
-        <p class="tagline">Discover, save, and use ready-to-use prompts for your everyday needs.</p>
-        <p class="sub-description">
-          Promptixa is a clean and efficient prompt discovery, customization, and management app designed to help you streamline your creative workflows, coding sessions, studies, and daily productivity.
+  <!-- Main Content Area -->
+  <main class="landing-main">
+
+    <!-- Hero Section -->
+    <section class="hero-section" aria-labelledby="hero-heading">
+      <div class="hero-grid">
+        
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Official AI Prompt Community Platform
+          </div>
+
+          <h1 id="hero-heading">
+            Discover, Customize & Export <span class="gradient-text">High-Performance AI Prompts</span>
+          </h1>
+
+          <p class="hero-description">
+            Promptixa provides a curated library of ready-to-use prompt templates for coding, copywriting, productivity, and image generation. Tailor dynamic variables with one tap and export directly to ChatGPT or Google Gemini.
+          </p>
+
+          <div class="hero-actions">
+            <a href="https://play.google.com/store/apps/details?id=com.promptixa.app" target="_blank" rel="noopener" class="playstore-badge-link" aria-label="Get Promptixa on Google Play Store">
+              <img src="assets/GetItOnGooglePlay.png" alt="Get it on Google Play" class="playstore-badge-img" width="180" height="54">
+            </a>
+            <a href="help/" class="btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              Explore Help Center Guides
+            </a>
+          </div>
+
+          <div class="hero-highlights-strip">
+            <span class="hero-highlight-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              100% Free to Use
+            </span>
+            <span class="hero-highlight-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              ChatGPT & Gemini Ready
+            </span>
+            <span class="hero-highlight-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Dynamic Variables
+            </span>
+            <span class="hero-highlight-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              Guest Browsing Supported
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal-on-scroll">
+          <div class="hero-device-wrapper">
+            <img 
+              src="assets/playstore/promptixa_mobile/01_prompt_library.png" 
+              alt="Promptixa Mobile App Interface showing prompt discovery library and categories" 
+              class="hero-screenshot-img"
+              width="304"
+              height="608"
+              loading="eager"
+            >
+            
+            <div class="floating-pill pill-top">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <span>Custom Variables <code>&lt;topic&gt;</code></span>
+            </div>
+
+            <div class="floating-pill pill-bottom">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>1-Tap ChatGPT & Gemini Launch</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Essential Product Clarity Banner -->
+    <section class="clarity-banner reveal-on-scroll" aria-label="Product Clarification">
+      <div class="clarity-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="clarity-content">
+        <h3>What is Promptixa? (And what it is NOT)</h3>
+        <p>
+          Promptixa is a curated and community-driven AI prompt discovery, customization, and library platform. <strong>Promptixa is not a chatbot or conversational AI assistant</strong> and does not generate AI responses inside the app. It gives you crafted, variable-customizable prompts that you can copy or send directly to external tools like ChatGPT and Google Gemini.
         </p>
-        <div class="app-info-card">
-          <strong>Promptixa: AI Prompt Community by Satyam Studios</strong>
-          <p>Support & Inquiries: <a href="mailto:satyamstudios.dev@gmail.com">satyamstudios.dev@gmail.com</a></p>
-          <p style="margin-top: 0.75rem;">Need assistance or guides? Visit our <a href="help/" style="font-weight: 600;">Help Center &rarr;</a></p>
-        </div>
-
-        <div style="margin-top: 1.5rem; font-size: 0.825rem; color: var(--text-muted); max-width: 650px; line-height: 1.5;">
-          <p style="margin-bottom: 0.35rem;"><strong style="color: var(--text-main);">Prompt & Thumbnail Notice:</strong> Promptixa provides prompts for use with AI tools. Prompts and visual thumbnails may be provided by community creators. Actual results may differ depending on the AI tool and model used. Please review AI-generated results before relying on them.</p>
-        </div>
       </div>
     </section>
 
-    <section class="links-section">
-      <div class="links-container">
-        <h2>Help, Legal & Support</h2>
-        <ul class="legal-links-list">
-          <li><a href="help/">Help Center & User Guides</a></li>
-          <li><a href="legal/privacy.html">Privacy Policy</a></li>
-          <li><a href="legal/terms.html">Terms & Conditions</a></li>
-          <li><a href="legal/account-deletion.html">Account Deletion Instructions</a></li>
-        </ul>
+    <!-- Core Features Grid -->
+    <section id="features" class="features-section reveal-on-scroll" aria-labelledby="features-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">Core Capabilities</span>
+        <h2 id="features-heading">Everything You Need to Supercharge Your AI Prompts</h2>
+        <p>Built from the ground up for prompt creators, developers, writers, and AI enthusiasts.</p>
+      </div>
+
+      <div class="features-grid">
+        
+        <div class="feature-card reveal-on-scroll reveal-delay-1">
+          <div class="feature-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3>Curated Discovery Feeds</h3>
+          <p>Explore prompts categorized into <em>New</em> (by creation date), <em>Popular</em> (by user favorites), and curated <em>Featured</em> collections across various creative and technical domains.</p>
+        </div>
+
+        <div class="feature-card reveal-on-scroll reveal-delay-2">
+          <div class="feature-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Dynamic Variable Customization</h3>
+          <p>Fill in placeholders like <code>&lt;topic&gt;</code>, <code>&lt;tone&gt;</code>, and <code>&lt;style&gt;</code> directly inside the prompt details screen to tailor outputs before copying.</p>
+        </div>
+
+        <div class="feature-card reveal-on-scroll reveal-delay-3">
+          <div class="feature-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 3.37 2.1 6.25 5.09 7.36L9 22l4-2 4 2-.09-4.64C19.9 16.25 22 13.37 22 10a8 8 0 0 0-8-8z"/></svg>
+          </div>
+          <h3>One-Tap External AI Launch</h3>
+          <p>Instantly launch customized prompts into ChatGPT or Google Gemini with automatic clipboard backup fallback for reliable pasting in any browser or app.</p>
+        </div>
+
+        <div class="feature-card reveal-on-scroll reveal-delay-4">
+          <div class="feature-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          </div>
+          <h3>Community & Submissions</h3>
+          <p>Submit your own high-performing prompts to the community (up to 6 tags per submission). Creators enjoy ad-free instant access to their own submitted prompts.</p>
+        </div>
+
       </div>
     </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section reveal-on-scroll" aria-labelledby="how-it-works-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">Simple 3-Step Workflow</span>
+        <h2 id="how-it-works-heading">How Promptixa Streamlines Your Workflow</h2>
+        <p>From discovering top-tier prompt templates to generating results in your preferred AI tool.</p>
+      </div>
+
+      <div class="steps-grid">
+        
+        <div class="step-card reveal-on-scroll reveal-delay-1">
+          <span class="step-badge">Step 1</span>
+          <h3>1. Discover & Browse</h3>
+          <p>Explore curated prompt categories or browse New, Popular, and Featured feeds to find the perfect template for your task.</p>
+        </div>
+
+        <div class="step-card reveal-on-scroll reveal-delay-2">
+          <span class="step-badge">Step 2</span>
+          <h3>2. Customize Variables</h3>
+          <p>Fill in dynamic placeholders (e.g. topic, tone, format) in the <em>Customize Variables:</em> section to personalize your prompt.</p>
+        </div>
+
+        <div class="step-card reveal-on-scroll reveal-delay-3">
+          <span class="step-badge">Step 3</span>
+          <h3>3. Launch & Export</h3>
+          <p>Tap <em>Copy Prompt</em> or launch ChatGPT / Gemini with one tap. Promptixa copies the final text to your clipboard automatically.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- App Visual Showcase (Elevated Product Showcase) -->
+    <section id="showcase" class="showcase-section reveal-on-scroll" aria-labelledby="showcase-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">Product Experience</span>
+        <h2 id="showcase-heading">Crafted for Seamless Prompt Discovery</h2>
+        <p>A closer look at the actual Promptixa mobile experience designed for speed, custom variable editing, and community publishing.</p>
+      </div>
+
+      <div class="showcase-container">
+        
+        <!-- Showcase Featured Spotlight: Variable Editing & Instant Launch -->
+        <div class="showcase-spotlight reveal-on-scroll">
+          <div class="showcase-spotlight-device">
+            <div class="device-mockup">
+              <img 
+                src="assets/playstore/promptixa_mobile/02_prompt_details.png" 
+                alt="Prompt Details screen displaying dynamic variable inputs and 1-tap export buttons"
+                width="270"
+                height="540"
+                loading="lazy"
+              >
+            </div>
+          </div>
+          <div class="showcase-spotlight-content">
+            <span class="showcase-badge">Interactive Experience</span>
+            <h3>Dynamic Variables & Instant Export</h3>
+            <p>Every template is customizable. Open any prompt to tailor dynamic variables like <code>&lt;topic&gt;</code>, <code>&lt;tone&gt;</code>, or <code>&lt;style&gt;</code> directly within the prompt details screen.</p>
+            
+            <div class="showcase-feature-list">
+              <div class="showcase-feature-item">
+                <div class="feature-bullet-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong>Inline Variable Editing</strong>
+                  <p>Type custom parameters right on screen before copying or sending.</p>
+                </div>
+              </div>
+
+              <div class="showcase-feature-item">
+                <div class="feature-bullet-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong>Direct AI App Launch</strong>
+                  <p>Send finalized prompts directly to ChatGPT and Google Gemini with clipboard fallback.</p>
+                </div>
+              </div>
+
+              <div class="showcase-feature-item">
+                <div class="feature-bullet-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <strong>Rewarded Session Unlocks</strong>
+                  <p>Unlock locked community prompts for your active session with zero subscriptions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Showcase Grid: Categories, Creator Studio & Favorites -->
+        <div class="showcase-cards-grid">
+          
+          <div class="showcase-device-card reveal-on-scroll reveal-delay-1">
+            <div class="showcase-device-frame">
+              <img 
+                src="assets/playstore/promptixa_mobile/03_explore_categories.png" 
+                alt="Explore Categories screen showing Writing, Coding, Productivity, and Image categories"
+                width="240"
+                height="480"
+                loading="lazy"
+              >
+            </div>
+            <div class="showcase-device-info">
+              <h4>Structured Domain Exploration</h4>
+              <p>Explore prompts organized by domain—including Coding, Creative Writing, Marketing, and AI Image Generation.</p>
+            </div>
+          </div>
+
+          <div class="showcase-device-card reveal-on-scroll reveal-delay-2">
+            <div class="showcase-device-frame">
+              <img 
+                src="assets/playstore/promptixa_mobile/05_create_share_prompts.png" 
+                alt="Create and Submit Prompt screen allowing creators to submit prompts with up to 6 tags"
+                width="240"
+                height="480"
+                loading="lazy"
+              >
+            </div>
+            <div class="showcase-device-info">
+              <h4>Creator Studio & Submissions</h4>
+              <p>Submit your own prompts to the global community with custom tags and retain permanent ad-free access to your work.</p>
+            </div>
+          </div>
+
+          <div class="showcase-device-card reveal-on-scroll reveal-delay-3">
+            <div class="showcase-device-frame">
+              <img 
+                src="assets/playstore/promptixa_mobile/06_save_favorites.png" 
+                alt="Saved Prompts screen organizing bookmarked templates for one-tap retrieval"
+                width="240"
+                height="480"
+                loading="lazy"
+              >
+            </div>
+            <div class="showcase-device-info">
+              <h4>Personal Favorites Library</h4>
+              <p>Bookmark your most-used prompt templates for fast, one-tap retrieval anytime without re-searching.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- External AI Integration Spotlight -->
+    <section class="integration-section reveal-on-scroll" aria-labelledby="integration-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">External Integrations</span>
+        <h2 id="integration-heading">Built to Work Seamlessly with Your Favorite AI Tools</h2>
+        <p>Transfer compiled prompts effortlessly to leading conversational AI platforms.</p>
+      </div>
+
+      <div class="integration-grid">
+        
+        <div class="integration-card reveal-on-scroll reveal-delay-1">
+          <div class="integration-card-header">
+            <img src="assets/chatgpt-icon.svg" alt="ChatGPT Integration Icon" class="integration-logo-icon" width="36" height="36">
+            <h3>ChatGPT Integration</h3>
+          </div>
+          <p>Promptixa copies your customized prompt to the clipboard and launches ChatGPT with prompt text prefilled, backed by manual paste fallback if needed.</p>
+        </div>
+
+        <div class="integration-card reveal-on-scroll reveal-delay-2">
+          <div class="integration-card-header">
+            <img src="assets/google-gemini-icon.png" alt="Google Gemini Integration Icon" class="integration-logo-icon" width="36" height="36">
+            <h3>Google Gemini Integration</h3>
+          </div>
+          <p>Launch Google Gemini directly from Promptixa on Android or web with automatic clipboard backup for quick and dependable prompt submission.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Trust & Disclaimers Strip -->
+    <section class="disclaimer-strip reveal-on-scroll" aria-label="Disclaimers and Product Notes">
+      <p>
+        <strong>100% Free to Use:</strong> Promptixa is completely free — prompts are never sold and there are no subscriptions. Locked community prompts are unlocked for your session via rewarded video ads. Creators always have ad-free access to their own submissions.
+      </p>
+      <p>
+        <strong>Prompt & Thumbnail Notice:</strong> Promptixa provides prompts for use with external AI tools. Prompt thumbnails are visual examples provided by community creators. Actual results may differ depending on the AI tool and model used. Please review AI-generated results before relying on them.
+      </p>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="cta-section reveal-on-scroll" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Ready to Discover & Customize High-Performance AI Prompts?</h2>
+      <p>Download Promptixa free on Google Play Store or explore our official guides to master AI prompting.</p>
+      <div class="cta-actions">
+        <a href="https://play.google.com/store/apps/details?id=com.promptixa.app" target="_blank" rel="noopener" class="playstore-badge-link" aria-label="Get Promptixa on Google Play Store">
+          <img src="assets/GetItOnGooglePlay.png" alt="Get it on Google Play" class="playstore-badge-img" width="180" height="54">
+        </a>
+        <a href="help/" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          Explore Help Center Guides
+        </a>
+      </div>
+    </section>
+
   </main>
 
+  <!-- Semantic Footer -->
   <footer class="site-footer">
     <div class="footer-container">
-      <p>&copy; 2026 Satyam Studios. All rights reserved.</p>
+      <div class="footer-top">
+        
+        <div class="footer-brand">
+          <span class="footer-brand-title">Promptixa</span>
+          <p>Curated and community-driven AI prompt discovery, customization, and library platform.</p>
+          <p style="margin-top: 0.25rem;">Developed with care by <strong>Satyam Studios</strong></p>
+        </div>
+
+        <div class="footer-nav-groups">
+          <div class="footer-nav-col">
+            <h4>Product</h4>
+            <a href="https://play.google.com/store/apps/details?id=com.promptixa.app" target="_blank" rel="noopener">Get on Google Play</a>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#showcase">App Showcase</a>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>Support & Knowledge</h4>
+            <a href="help/">Help Center</a>
+            <a href="help/#variables">Prompt Variables</a>
+            <a href="help/#unlocking-copying">Unlocking Prompts</a>
+            <a href="help/#troubleshooting">Troubleshooting</a>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>Legal & Privacy</h4>
+            <a href="legal/privacy.html">Privacy Policy</a>
+            <a href="legal/terms.html">Terms & Conditions</a>
+            <a href="legal/account-deletion.html">Account Deletion</a>
+            <a href="mailto:satyamstudios.dev@gmail.com">Contact Support</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Satyam Studios. All rights reserved.</p>
+        <p>Promptixa: AI Prompt Community &bull; Official Website</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Lightweight Animation & Scroll Observer -->
+  <script>
+    (function() {
+      // Check for prefers-reduced-motion
+      var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (motionQuery.matches) {
+        var reveals = document.querySelectorAll('.reveal-on-scroll');
+        for (var i = 0; i < reveals.length; i++) {
+          reveals[i].classList.add('is-visible');
+        }
+        return;
+      }
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries, obs) {
+          for (var i = 0; i < entries.length; i++) {
+            if (entries[i].isIntersecting) {
+              entries[i].target.classList.add('is-visible');
+              obs.unobserve(entries[i].target);
+            }
+          }
+        }, {
+          threshold: 0.08,
+          rootMargin: '0px 0px -30px 0px'
+        });
+
+        var elements = document.querySelectorAll('.reveal-on-scroll');
+        for (var k = 0; k < elements.length; k++) {
+          observer.observe(elements[k]);
+        }
+      } else {
+        var fallbackReveals = document.querySelectorAll('.reveal-on-scroll');
+        for (var j = 0; j < fallbackReveals.length; j++) {
+          fallbackReveals[j].classList.add('is-visible');
+        }
+      }
+    })();
+  </script>
 
 </body>
 </html>
