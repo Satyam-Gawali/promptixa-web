@@ -1,25 +1,13 @@
 /**
  * Promptixa Help Center JavaScript Engine
- * Handles search, dual category/topic filtering, dynamic topic card updates,
- * accordions, hash navigation, and interactive variable demo.
+ * WebView-safe architecture: Event delegation, HTML5 <details>/<summary> integration,
+ * dual category/topic filtering, dynamic topic card updates, search, and robust clipboard fallback.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Elements
-  const searchInput = document.getElementById('helpSearchInput');
-  const clearSearchBtn = document.getElementById('clearSearchBtn');
-  const searchResultsBar = document.getElementById('searchResultsBar');
-  const searchCountSpan = document.getElementById('searchCount');
-  const searchQuerySpan = document.getElementById('searchQueryDisplay');
-  const resetFilterLink = document.getElementById('resetFilterLink');
-  const categoryTabs = document.querySelectorAll('.cat-tab-btn');
-  const topicCards = document.querySelectorAll('.topic-card');
-  const accordions = document.querySelectorAll('.article-accordion');
-  const categoryBlocks = document.querySelectorAll('.article-category-block');
-  const quickTagBtns = document.querySelectorAll('.quick-tag-btn');
-  const backToTopBtn = document.getElementById('backToTopBtn');
+(function () {
+  'use strict';
 
-  // Filter State
+  // State Management
   let activeCategory = 'all'; // 'all' or category key, e.g. 'discovering-prompts'
   let activeTopic = null;      // null or topic key, e.g. 'getting-started'
   let currentSearchQuery = '';
@@ -48,36 +36,90 @@ document.addEventListener('DOMContentLoaded', () => {
     'troubleshooting': 'Troubleshooting'
   };
 
-  // 1. Accordion Toggle
-  accordions.forEach((accordion) => {
-    const header = accordion.querySelector('.article-header');
-    if (header) {
-      header.addEventListener('click', () => {
-        const isOpen = accordion.classList.contains('open');
-        accordion.classList.toggle('open');
-        header.setAttribute('aria-expanded', !isOpen);
-      });
-
-      // Keyboard support
-      header.setAttribute('tabindex', '0');
-      header.setAttribute('role', 'button');
-      header.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          header.click();
-        }
-      });
+  // Safe Cross-Platform Scrolling Helper (Android WebView & Desktop compatible)
+  function safeScrollTo(target, offset = 90) {
+    if (!target) return;
+    let targetY = 0;
+    if (typeof target === 'number') {
+      targetY = target;
+    } else if (target instanceof HTMLElement) {
+      const rect = target.getBoundingClientRect();
+      targetY = rect.top + window.pageYOffset - offset;
     }
-  });
 
-  // 2. Unified Filter & Search Engine
+    try {
+      window.scrollTo({
+        top: Math.max(0, targetY),
+        behavior: 'smooth'
+      });
+    } catch (e) {
+      // Fallback for WebViews with restricted smooth scroll API
+      window.scrollTo(0, Math.max(0, targetY));
+    }
+  }
+
+  // Cross-Platform Clipboard Copy Helper with document.execCommand fallback
+  function copyTextToClipboard(text) {
+    return new Promise((resolve, reject) => {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text)
+          .then(resolve)
+          .catch(() => fallbackCopyText(text, resolve, reject));
+      } else {
+        fallbackCopyText(text, resolve, reject);
+      }
+    });
+  }
+
+  function fallbackCopyText(text, resolve, reject) {
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.top = '-9999px';
+      textArea.style.left = '-9999px';
+      textArea.setAttribute('readonly', '');
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      textArea.setSelectionRange(0, 99999);
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      if (successful) {
+        resolve();
+      } else {
+        reject(new Error('execCommand copy failed'));
+      }
+    } catch (err) {
+      reject(err);
+    }
+  }
+
+  // HTML Escape Helper
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.innerText = text;
+    return div.innerHTML;
+  }
+
+  // Unified Filter & Search Engine
   function applyFilters() {
     const query = currentSearchQuery.trim().toLowerCase();
+    const searchInput = document.getElementById('helpSearchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const searchResultsBar = document.getElementById('searchResultsBar');
+    const searchCountSpan = document.getElementById('searchCount');
+    const searchQuerySpan = document.getElementById('searchQueryDisplay');
+    const categoryBlocks = document.querySelectorAll('.article-category-block');
+    const topicCards = document.querySelectorAll('.topic-card');
+    const accordions = document.querySelectorAll('.article-accordion');
+    const categoryTabs = document.querySelectorAll('.cat-tab-btn');
+
     let totalVisibleCount = 0;
 
-    // Show/hide clear button
+    // Show/hide clear search button
     if (clearSearchBtn) {
-      clearSearchBtn.style.display = query.length > 0 ? 'flex' : 'none';
+      clearSearchBtn.style.display = query.length > 0 ? 'inline-flex' : 'none';
     }
 
     // Step A: Evaluate all articles against Active Category, Active Topic, and Search Query
@@ -114,9 +156,13 @@ document.addEventListener('DOMContentLoaded', () => {
           blockVisibleCount++;
           totalVisibleCount++;
 
-          // Auto-open accordion if user entered a specific search query
+          // Auto-open details when user enters a specific search query
           if (query.length > 2) {
-            article.classList.add('open');
+            if (article.tagName.toLowerCase() === 'details') {
+              article.open = true;
+            } else {
+              article.classList.add('open');
+            }
           }
         } else {
           article.style.display = 'none';
@@ -132,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const cardTopic = card.dataset.topic || (card.getAttribute('href') || '').replace('#', '');
       const countBadge = card.querySelector('.topic-guide-count');
 
-      // Count matching articles for this topic that satisfy the activeCategory (and query)
+      // Count matching articles for this topic that satisfy activeCategory (and query)
       let topicMatchesCount = 0;
       accordions.forEach((article) => {
         const articleCategories = (article.dataset.category || '').split(/\s+/);
@@ -170,15 +216,19 @@ document.addEventListener('DOMContentLoaded', () => {
             countBadge.textContent = `View ${topicMatchesCount} guide${topicMatchesCount === 1 ? '' : 's'}`;
           }
         } else {
-          // Hide card if it has zero matching guides for the active category/query
           card.style.display = 'none';
           card.classList.remove('active');
         }
       }
     });
 
-    // Step C: Update Search Results Indicator
-    if (searchResultsBar) {
+    // Step C: Update Category Tabs Active State
+    categoryTabs.forEach((tab) => {
+      tab.classList.toggle('active', (tab.dataset.category || 'all') === activeCategory);
+    });
+
+    // Step D: Update Search Results Indicator
+    if (searchResultsBar && searchCountSpan && searchQuerySpan) {
       const isFiltered = (query.length > 0 || activeCategory !== 'all' || activeTopic !== null);
 
       if (isFiltered) {
@@ -203,142 +253,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 3. Search Input Listener
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      currentSearchQuery = e.target.value;
-      applyFilters();
-    });
-
-    // Keyboard shortcut '/' to focus search
-    document.addEventListener('keydown', (e) => {
-      if (e.key === '/' && document.activeElement !== searchInput && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-        e.preventDefault();
-        searchInput.focus();
-        searchInput.select();
-      }
-    });
-  }
-
-  if (clearSearchBtn) {
-    clearSearchBtn.addEventListener('click', () => {
-      if (searchInput) {
-        searchInput.value = '';
-        currentSearchQuery = '';
-        applyFilters();
-        searchInput.focus();
-      }
-    });
-  }
-
-  // 4. Reset All Filters Link
-  if (resetFilterLink) {
-    resetFilterLink.addEventListener('click', () => {
-      activeCategory = 'all';
-      activeTopic = null;
-      currentSearchQuery = '';
-      if (searchInput) searchInput.value = '';
-      categoryTabs.forEach((tab) => {
-        tab.classList.toggle('active', tab.dataset.category === 'all');
-      });
-      applyFilters();
-    });
-  }
-
-  // 5. Category Tabs Listener
-  categoryTabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      categoryTabs.forEach((t) => t.classList.remove('active'));
-      tab.classList.add('active');
-      activeCategory = tab.dataset.category || 'all';
-      activeTopic = null; // Reset topic when switching categories so all matching topics are available
-      applyFilters();
-    });
-  });
-
-  // 6. Topic Cards Navigation Listener
-  topicCards.forEach((card) => {
-    card.addEventListener('click', (e) => {
-      const cardTopic = card.dataset.topic || (card.getAttribute('href') || '').replace('#', '');
-
-      if (activeCategory === 'all') {
-        // Normal behavior when no category filter is active
-        activeTopic = null;
-        applyFilters();
-        const targetElement = document.getElementById(cardTopic);
-        if (targetElement) {
-          setTimeout(() => {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 50);
-        }
-      } else {
-        // Category filter is active: keep category filter and apply topic filter
-        e.preventDefault();
-
-        // Toggle active topic
-        if (activeTopic === cardTopic) {
-          activeTopic = null; // Unselect topic filter while keeping category filter active
-        } else {
-          activeTopic = cardTopic;
-        }
-
-        applyFilters();
-
-        const targetElement = document.getElementById(cardTopic);
-        if (targetElement && targetElement.style.display !== 'none') {
-          setTimeout(() => {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 50);
-        }
-      }
-    });
-  });
-
-  // 7. Quick Tag Buttons
-  quickTagBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const tagText = btn.dataset.query || btn.innerText.trim();
-      if (searchInput) {
-        searchInput.value = tagText;
-        currentSearchQuery = tagText;
-        applyFilters();
-        searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-  });
-
-  // 8. Deep Linking via URL Hash
-  function handleUrlHash() {
-    const hash = window.location.hash;
-    if (hash) {
-      const targetId = hash.replace('#', '');
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        if (targetElement.classList.contains('article-accordion')) {
-          targetElement.classList.add('open');
-        } else {
-          const nestedAccordion = targetElement.querySelector('.article-accordion');
-          if (nestedAccordion) nestedAccordion.classList.add('open');
-        }
-        setTimeout(() => {
-          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 150);
-      }
-    }
-  }
-
-  window.addEventListener('hashchange', handleUrlHash);
-  handleUrlHash();
-
-  // 9. Interactive Variable Simulator Demo
-  const topicInput = document.getElementById('simTopic');
-  const toneInput = document.getElementById('simTone');
-  const styleInput = document.getElementById('simStyle');
-  const previewOutput = document.getElementById('simPreviewOutput');
-  const simCopyBtn = document.getElementById('simCopyBtn');
-  const simResetBtn = document.getElementById('simResetBtn');
-
+  // Interactive Variable Simulator Demo
   function updateSimulator() {
+    const topicInput = document.getElementById('simTopic');
+    const toneInput = document.getElementById('simTone');
+    const styleInput = document.getElementById('simStyle');
+    const previewOutput = document.getElementById('simPreviewOutput');
+
     if (!previewOutput) return;
 
     const topic = topicInput?.value.trim() || '<topic>';
@@ -352,62 +273,241 @@ document.addEventListener('DOMContentLoaded', () => {
     previewOutput.innerHTML = `Write a ${toneFormatted} article about ${topicFormatted} in a ${styleFormatted} format. Include 3 actionable tips and a clear summary.`;
   }
 
-  function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.innerText = text;
-    return div.innerHTML;
+  // Deep Linking via URL Hash
+  function handleUrlHash() {
+    const hash = window.location.hash;
+    if (hash && hash.length > 1) {
+      const targetId = hash.replace('#', '');
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        // If target is an accordion or contains one, ensure it is open
+        if (targetElement.tagName.toLowerCase() === 'details') {
+          targetElement.open = true;
+        } else if (targetElement.classList.contains('article-accordion')) {
+          targetElement.classList.add('open');
+        } else {
+          const nestedDetails = targetElement.querySelector('details.article-accordion');
+          if (nestedDetails) nestedDetails.open = true;
+        }
+
+        // Ensure parent block is visible
+        const parentBlock = targetElement.closest('.article-category-block');
+        if (parentBlock) parentBlock.style.display = '';
+
+        safeScrollTo(targetElement, 110);
+      }
+    }
   }
 
-  if (topicInput && toneInput && styleInput) {
-    [topicInput, toneInput, styleInput].forEach((input) => {
-      input.addEventListener('input', updateSimulator);
-    });
+  // Initialize Event Listeners via Event Delegation on Document
+  function initApp() {
+    const searchInput = document.getElementById('helpSearchInput');
+    const backToTopBtn = document.getElementById('backToTopBtn');
 
-    if (simResetBtn) {
-      simResetBtn.addEventListener('click', () => {
-        topicInput.value = 'Quantum Computing';
-        toneInput.value = 'engaging & beginner-friendly';
-        styleInput.value = 'step-by-step guide';
-        updateSimulator();
+    // Search Input Listener
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentSearchQuery = e.target.value;
+        applyFilters();
+      });
+
+      // Shortcut '/' key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        }
       });
     }
 
-    if (simCopyBtn) {
-      simCopyBtn.addEventListener('click', () => {
-        const plainText = previewOutput ? previewOutput.innerText : '';
-        navigator.clipboard.writeText(plainText).then(() => {
-          const originalHTML = simCopyBtn.innerHTML;
-          simCopyBtn.innerHTML = `
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-            Copied!
-          `;
-          simCopyBtn.style.backgroundColor = '#10b981';
-          setTimeout(() => {
-            simCopyBtn.innerHTML = originalHTML;
-            simCopyBtn.style.backgroundColor = '';
-          }, 2000);
-        }).catch(() => {
-          alert('Customized prompt copied to clipboard!');
-        });
-      });
-    }
-
-    // Initialize with default values
-    updateSimulator();
-  }
-
-  // 10. Back to Top Button
-  if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
+    // Input listeners for Simulator fields
+    const simFields = ['simTopic', 'simTone', 'simStyle'];
+    simFields.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', updateSimulator);
       }
     });
 
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Global Click Delegation (Handles all taps / clicks seamlessly in Android WebView & Browsers)
+    document.addEventListener('click', (e) => {
+      // 1. Category Tab Click
+      const catTab = e.target.closest('.cat-tab-btn');
+      if (catTab) {
+        e.preventDefault();
+        activeCategory = catTab.dataset.category || 'all';
+        activeTopic = null; // Reset topic filter when switching categories
+        applyFilters();
+        return;
+      }
+
+      // 2. Topic Card Click
+      const topicCard = e.target.closest('.topic-card');
+      if (topicCard) {
+        e.preventDefault();
+        const cardTopic = topicCard.dataset.topic || (topicCard.getAttribute('href') || '').replace('#', '');
+
+        if (activeCategory === 'all') {
+          // Normal behavior: reset activeTopic, apply filters, scroll to target section
+          activeTopic = null;
+          applyFilters();
+          const targetSection = document.getElementById(cardTopic);
+          if (targetSection) {
+            safeScrollTo(targetSection, 110);
+          }
+        } else {
+          // Category filter is active: toggle activeTopic under current category
+          if (activeTopic === cardTopic) {
+            activeTopic = null; // Unselect topic filter while keeping category filter active
+          } else {
+            activeTopic = cardTopic;
+          }
+          applyFilters();
+
+          const targetSection = document.getElementById(cardTopic);
+          if (targetSection && targetSection.style.display !== 'none') {
+            safeScrollTo(targetSection, 110);
+          }
+        }
+        return;
+      }
+
+      // 3. Quick Tag Button Click
+      const quickTagBtn = e.target.closest('.quick-tag-btn');
+      if (quickTagBtn) {
+        e.preventDefault();
+        const tagText = quickTagBtn.dataset.query || quickTagBtn.innerText.trim();
+        if (searchInput) {
+          searchInput.value = tagText;
+          currentSearchQuery = tagText;
+          applyFilters();
+          safeScrollTo(searchInput, 100);
+        }
+        return;
+      }
+
+      // 4. Clear Search Button Click
+      const clearSearchBtn = e.target.closest('#clearSearchBtn');
+      if (clearSearchBtn) {
+        e.preventDefault();
+        if (searchInput) {
+          searchInput.value = '';
+          currentSearchQuery = '';
+          applyFilters();
+          searchInput.focus();
+        }
+        return;
+      }
+
+      // 5. Reset All Filters Button Click
+      const resetFilter = e.target.closest('#resetFilterLink');
+      if (resetFilter) {
+        e.preventDefault();
+        activeCategory = 'all';
+        activeTopic = null;
+        currentSearchQuery = '';
+        if (searchInput) searchInput.value = '';
+        applyFilters();
+        return;
+      }
+
+      // 6. Simulator Reset Button Click
+      const simReset = e.target.closest('#simResetBtn');
+      if (simReset) {
+        e.preventDefault();
+        const topicInput = document.getElementById('simTopic');
+        const toneInput = document.getElementById('simTone');
+        const styleInput = document.getElementById('simStyle');
+        if (topicInput) topicInput.value = 'Quantum Computing';
+        if (toneInput) toneInput.value = 'engaging & beginner-friendly';
+        if (styleInput) styleInput.value = 'step-by-step guide';
+        updateSimulator();
+        return;
+      }
+
+      // 7. Simulator Copy Button Click
+      const simCopy = e.target.closest('#simCopyBtn');
+      if (simCopy) {
+        e.preventDefault();
+        const previewOutput = document.getElementById('simPreviewOutput');
+        const plainText = previewOutput ? previewOutput.innerText : '';
+        const originalHTML = simCopy.innerHTML;
+
+        copyTextToClipboard(plainText)
+          .then(() => {
+            simCopy.innerHTML = `
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              Copied!
+            `;
+            simCopy.style.backgroundColor = '#10b981';
+            setTimeout(() => {
+              simCopy.innerHTML = originalHTML;
+              simCopy.style.backgroundColor = '';
+            }, 2000);
+          })
+          .catch(() => {
+            alert('Prompt customized: ' + plainText);
+          });
+        return;
+      }
+
+      // 8. Back to Top Button Click
+      const backTop = e.target.closest('#backToTopBtn');
+      if (backTop) {
+        e.preventDefault();
+        safeScrollTo(0);
+        return;
+      }
+
+      // 9. Internal Hash Anchor Links (e.g. #faq, #troubleshooting, #contact, #simulator)
+      const anchorLink = e.target.closest('a[href^="#"]');
+      if (anchorLink && !anchorLink.classList.contains('topic-card')) {
+        const hash = anchorLink.getAttribute('href');
+        if (hash && hash.length > 1) {
+          const targetId = hash.replace('#', '');
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            if (targetElement.tagName.toLowerCase() === 'details') {
+              targetElement.open = true;
+            }
+            safeScrollTo(targetElement, 110);
+            try {
+              history.pushState(null, null, hash);
+            } catch (err) {
+              // Ignore pushState errors in restricted WebView contexts
+            }
+          }
+        }
+      }
     });
+
+    // Scroll listener for Back to Top visibility
+    if (backToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      }, { passive: true });
+    }
+
+    // Hashchange listener for URL deep-linking
+    window.addEventListener('hashchange', handleUrlHash);
+
+    // Initial setups
+    updateSimulator();
+    applyFilters();
+    handleUrlHash();
   }
-});
+
+  // Boot on DOMContentLoaded or immediately if already loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
+
+})();
