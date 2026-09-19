@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center | Promptixa: AI Prompt Community</title>
+  <meta name="description" content="Official Help Center for Promptixa: AI Prompt Community. Find guides on discovering prompts, customizing variables, unlocking prompts, using ChatGPT and Gemini, submissions, and troubleshooting.">
+  <meta name="keywords" content="Promptixa, AI Prompt Community, Promptixa help, Promptixa support, Promptixa guides, AI prompts help, Promptixa FAQ">
+  <meta name="author" content="Satyam Studios">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#090e1a">
+  <meta name="application-name" content="Promptixa: AI Prompt Community">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="canonical" href="https://satyam-gawali.github.io/promptixa-web/help/">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:title" content="Help Center | Promptixa: AI Prompt Community">
+  <meta property="og:description" content="Learn how to discover, customize, unlock, and manage AI prompts with Promptixa.">
+  <meta property="og:url" content="https://satyam-gawali.github.io/promptixa-web/help/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Promptixa: AI Prompt Community">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Help Center | Promptixa: AI Prompt Community">
+  <meta name="twitter:description" content="Official guides, feature explanations, FAQs, and support for Promptixa.">
+
+  <!-- Favicons -->
+  <link rel="icon" href="../assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/icons/favicon-96x96.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="../assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="../assets/icons/site.webmanifest">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HelpCenter",
+    "name": "Promptixa Help Center",
+    "url": "https://satyam-gawali.github.io/promptixa-web/help/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Satyam Studios",
+      "email": "satyamstudios.dev@gmail.com"
+    }
+  }
+  </script>
+
+  <!-- Typography & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/help.css">
+</head>
+<body>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-link">
+          <img src="../assets/icons/favicon-96x96.png" alt="Promptixa Logo" class="brand-logo-icon">
+          <span class="brand-name">Promptixa</span>
+        </a>
+        <span class="brand-badge">Help Center</span>
+      </div>
+      <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#faq">FAQ</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#contact" class="nav-cta-btn">Get Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="help-main">
+
+    <!-- Hero Search Section -->
+    <section class="help-hero">
+      <div class="hero-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        Official Promptixa Knowledge Base
+      </div>
+      <h1>How can we <span class="gradient-text">help you</span> today?</h1>
+      <p>Search guides, feature walkthroughs, troubleshooting tips, and learn how to get the most out of Promptixa.</p>
+
+      <!-- Instant Live Search Bar -->
+      <div class="search-wrapper">
+        <div class="search-input-container">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="search" 
+            id="helpSearchInput" 
+            class="help-search-input" 
+            placeholder="Search variables, unlocking prompts, ChatGPT, submissions..." 
+            aria-label="Search Help Center"
+            autocomplete="off"
+          >
+          <div class="search-controls">
+            <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" aria-label="Clear search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <span class="search-shortcut-badge" title="Press '/' to focus">/</span >
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Search Suggestions -->
+      <div class="quick-tags">
+        <span class="quick-tag-label">Popular topics:</span>
+        <button class="quick-tag-btn" data-query="variables">Variables & Placeholders</button>
+        <button class="quick-tag-btn" data-query="unlock">Unlocking Prompts</button>
+        <button class="quick-tag-btn" data-query="chatgpt">ChatGPT & Gemini</button>
+        <button class="quick-tag-btn" data-query="submit">Submit a Prompt (Max 6 Tags)</button>
+        <button class="quick-tag-btn" data-query="troubleshoot">Troubleshooting</button>
+      </div>
+    </section>
+
+    <!-- Essential Clarification Banner -->
+    <div class="notice-card">
+      <div class="notice-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="notice-content">
+        <h4>What is Promptixa?</h4>
+        <p>Promptixa is a curated and community-driven AI prompt discovery, customization, and library platform. <strong>Promptixa is not a chatbot or conversational AI assistant</strong> and does not generate AI responses inside the app. It provides ready-to-use, customizable prompts that you can copy or send to external tools like ChatGPT and Google Gemini.</p>
+      </div>
+    </div>
+
+    <!-- Search Results Bar Indicator -->
+    <div id="searchResultsBar" class="search-results-indicator">
+      <span>Showing <strong id="searchCount">0</strong> matching articles for <strong id="searchQueryDisplay">""</strong></span>
+      <span id="resetFilterLink" class="reset-filter-link">Clear Filter & Show All</span>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="category-nav-wrapper">
+      <div class="category-tabs" role="tablist">
+        <button class="cat-tab-btn active" data-category="all" role="tab">All Topics</button>
+        <button class="cat-tab-btn" data-category="getting-started" role="tab">Getting Started</button>
+        <button class="cat-tab-btn" data-category="discovering-prompts" role="tab">Finding Prompts</button>
+        <button class="cat-tab-btn" data-category="unlocking-copying" role="tab">Unlocking & Copying</button>
+        <button class="cat-tab-btn" data-category="variables" role="tab">Prompt Variables</button>
+        <button class="cat-tab-btn" data-category="external-ai" role="tab">ChatGPT & Gemini</button>
+        <button class="cat-tab-btn" data-category="submissions" role="tab">Create & Submissions</button>
+        <button class="cat-tab-btn" data-category="account" role="tab">Account & Profile</button>
+        <button class="cat-tab-btn" data-category="troubleshooting" role="tab">Troubleshooting</button>
+      </div>
+    </div>
+
+    <!-- Category Overview Card Grid -->
+    <section class="topic-grid-section">
+      <div class="section-title-wrap">
+        <h2>Explore by Topic</h2>
+      </div>
+      <div class="topic-grid">
+
+        <a href="#getting-started" class="topic-card">
+          <div class="topic-card-header">
+            <div class="topic-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
+            </div>
+            <h3>Getting Started</h3>
+          </div>
+          <p>Learn the basics of Promptixa, guest browsing, and how the 5 main navigation areas work.</p>
+          <div class="topic-card-footer">
+            <span>View 3 guides</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <a href="#unlocking-copying" class="topic-card">
+          <div class="topic-card-header">
+            <div class="topic-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+            </div>
+            <h3>Unlocking & Copying</h3>
+          </div>
+          <p>How rewarded ads unlock locked prompts for your session, free access for creators, and clipboard copying.</p>
+          <div class="topic-card-footer">
+            <span>View 2 guides</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <a href="#variables" class="topic-card">
+          <div class="topic-card-header">
+            <div class="topic-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Prompt Variables</h3>
+          </div>
+          <p>Customize dynamic placeholders like &lt;topic&gt; and &lt;tone&gt; to tailor prompts to your exact requirements.</p>
+          <div class="topic-card-footer">
+            <span>View 2 guides</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <a href="#external-ai" class="topic-card">
+          <div class="topic-card-header">
+            <div class="topic-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 3.37 2.1 6.25 5.09 7.36L9 22l4-2 4 2-.09-4.64C19.9 16.25 22 13.37 22 10a8 8 0 0 0-8-8z"/></svg>
+            </div>
+            <h3>ChatGPT & Gemini</h3>
+          </div>
+          <p>Send prompts seamlessly to ChatGPT and Google Gemini with automatic clipboard backup fallback.</p>
+          <div class="topic-card-footer">
+            <span>View 2 guides</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <a href="#submissions" class="topic-card">
+          <div class="topic-card-header">
+            <div class="topic-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            <h3>Creating Prompts</h3>
+          </div>
+          <p>Submit your own prompts to the community, manage tag limits (maximum 6 tags), and track review statuses.</p>
+          <div class="topic-card-footer">
+            <span>View 3 guides</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </a>
+
+        <a href="#troubleshooting" class="topic-card">
+          <div class="topic-card-header">
+            <div class="topic-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h3>Troubleshooting</h3>
+          </div>
+          <p>Fixes for prompt unlock issues, submission errors, external app pasting, and app update notifications.</p>
+          <div class="topic-card-footer">
+            <span>View 4 guides</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Interactive Variable Simulator Widget -->
+    <section id="simulator" class="simulator-card">
+      <div class="simulator-header">
+        <div>
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Interactive Demo: How Variable Customization Works
+          </h3>
+          <p>Test Promptixa's dynamic variable replacement in real time. Notice how values fill placeholders directly before copying.</p>
+        </div>
+        <span class="simulator-badge">Interactive Feature</span>
+      </div>
+
+      <div class="simulator-body">
+        <div class="sim-input-column">
+          <div class="sim-field-group">
+            <label for="simTopic">Topic <code>&lt;topic&gt;</code></label>
+            <input type="text" id="simTopic" class="sim-input" value="Quantum Computing" placeholder="e.g. Email Marketing, Machine Learning">
+          </div>
+          <div class="sim-field-group">
+            <label for="simTone">Tone <code>&lt;tone&gt;</code></label>
+            <input type="text" id="simTone" class="sim-input" value="engaging & beginner-friendly" placeholder="e.g. professional, humorous, persuasive">
+          </div>
+          <div class="sim-field-group">
+            <label for="simStyle">Style / Format <code>&lt;style&gt;</code></label>
+            <input type="text" id="simStyle" class="sim-input" value="step-by-step guide" placeholder="e.g. executive summary, bullet points">
+          </div>
+        </div>
+
+        <div class="sim-preview-column">
+          <div class="sim-preview-box">
+            <div class="sim-preview-text" id="simPreviewOutput">
+              <!-- Live preview inserted here -->
+            </div>
+            <div class="sim-actions">
+              <button id="simResetBtn" class="sim-btn-reset" type="button">Reset Example</button>
+              <button id="simCopyBtn" class="sim-btn-copy" type="button">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                Copy Customized Prompt
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comprehensive Knowledge Base Articles & Accordions -->
+    <section class="articles-section">
+
+      <!-- SECTION 1: GETTING STARTED & OVERVIEW -->
+      <div id="getting-started" class="article-category-block" data-category="getting-started">
+        <div class="category-block-header">
+          <h2>1. Getting Started & Overview</h2>
+          <span class="category-badge-count">3 Articles</span>
+        </div>
+
+        <!-- Article 1.1 -->
+        <article id="what-is-promptixa" class="article-accordion" data-category="getting-started" data-keywords="what is promptixa chatbot conversational ai prompt library features">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Overview</span>
+              <h3>What is Promptixa? (And what it is NOT)</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p><strong>Promptixa</strong> is a curated and community-driven AI prompt discovery, customization, and library platform. It is designed to help you quickly discover high-quality prompts, customize them with your own details, and use them with external AI tools.</p>
+            
+            <h4>What You Can Do on Promptixa:</h4>
+            <ul>
+              <li><strong>Discover AI Prompts:</strong> Browse curated prompts across multiple domains and categories.</li>
+              <li><strong>Explore Feeds:</strong> Discover prompts in <em>New</em>, <em>Popular</em>, and <em>Featured</em> sections.</li>
+              <li><strong>Customize Prompts:</strong> Fill in customizable variables/placeholders (such as <code>&lt;topic&gt;</code>, <code>&lt;style&gt;</code>, <code>&lt;tone&gt;</code>) to tailor prompts to your specific needs.</li>
+              <li><strong>Unlock Prompts:</strong> Unlock locked community prompts for your session by watching a rewarded ad.</li>
+              <li><strong>Copy & Export:</strong> Copy final customized prompts directly to your device clipboard.</li>
+              <li><strong>Launch in External AI:</strong> One-tap transfer to ChatGPT and Google Gemini.</li>
+              <li><strong>Save Favorites:</strong> Bookmark favorite prompts to your personal collection (requires sign-in).</li>
+              <li><strong>Submit Prompts:</strong> Share your own creative prompts with the community and track their status.</li>
+            </ul>
+
+            <div class="callout warning">
+              <svg class="callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div>
+                <strong>Important: Promptixa is NOT a Chatbot</strong><br>
+                Promptixa does NOT generate conversational AI responses or act as an AI assistant inside the app. Promptixa is purely a prompt discovery and management library. To generate AI answers, you copy or send your prompts to dedicated AI services like ChatGPT or Google Gemini.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 1.2 -->
+        <article id="guest-vs-account" class="article-accordion" data-category="getting-started" data-keywords="guest account google sign in login anonymous explore favorites create">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Accounts</span>
+              <h3>Using Promptixa as a Guest vs. With an Account</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>You can use many of Promptixa's core features immediately without creating an account or signing in. Signing in is only required when you want to save personal favorites or submit prompts to the community.</p>
+
+            <div class="table-responsive">
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Feature / Capability</th>
+                    <th>Guest User</th>
+                    <th>Signed-in User (Google)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Browse Home (New, Popular, Featured)</td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Explore all Categories</td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>View Prompt Details & Preview Images</td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Unlock Prompts via Rewarded Ads</td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Customize Prompt Variables & Copy</td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Open with ChatGPT / Gemini</td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Share Prompt Links</td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Save Prompts to Favorites</td>
+                    <td><span class="badge-no">✕ Sign-in required</span></td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Submit New Prompts</td>
+                    <td><span class="badge-no">✕ Sign-in required</span></td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                  </tr>
+                  <tr>
+                    <td>Manage My Submissions</td>
+                    <td><span class="badge-no">✕ Sign-in required</span></td>
+                    <td><span class="badge-yes">✓ Yes</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout info">
+              <svg class="callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>
+                <strong>Google Sign-In:</strong> Promptixa exclusively uses <strong>Google Sign-In</strong>. There are no separate email/password or phone number logins. You can sign in at any time from the <strong>Profile</strong> tab.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 1.3 -->
+        <article id="main-navigation-areas" class="article-accordion" data-category="getting-started" data-keywords="navigation tabs home explore create favorites profile layout">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Navigation</span>
+              <h3>The 5 Main Navigation Areas</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>Promptixa is organized into 5 primary tabs accessible from the main navigation bar:</p>
+            
+            <ul class="steps-list">
+              <li>
+                <div class="step-number">1</div>
+                <div>
+                  <strong>Home:</strong> Discover prompts grouped by <em>New</em> (ordered by creation date), <em>Popular</em> (ordered by favorite count), and curated <em>Featured</em> prompts.
+                </div>
+              </li>
+              <li>
+                <div class="step-number">2</div>
+                <div>
+                  <strong>Explore:</strong> Browse all available prompt categories (e.g., Coding, Writing, Productivity, Image Generation) to find prompts for your specific domain.
+                </div>
+              </li>
+              <li>
+                <div class="step-number">3</div>
+                <div>
+                  <strong>Create:</strong> Submit your own creative prompts to the Promptixa community with customizable variable placeholders.
+                </div>
+              </li>
+              <li>
+                <div class="step-number">4</div>
+                <div>
+                  <strong>Favorites:</strong> Your private bookmarked collection of prompts for quick access (requires Google Sign-In).
+                </div>
+              </li>
+              <li>
+                <div class="step-number">5</div>
+                <div>
+                  <strong>Profile:</strong> Access your Google account details, creator status, My Submissions dashboard, app info, legal policies, and Sign Out.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SECTION 2: FINDING & VIEWING PROMPTS -->
+      <div id="discovering-prompts" class="article-category-block" data-category="discovering-prompts">
+        <div class="category-block-header">
+          <h2>2. Finding & Viewing Prompts</h2>
+          <span class="category-badge-count">2 Articles</span>
+        </div>
+
+        <!-- Article 2.1 -->
+        <article id="finding-prompts" class="article-accordion" data-category="discovering-prompts" data-keywords="new popular featured categories search filter sort date favorites count">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Discovery</span>
+              <h3>How Prompt Sections & Feeds Work</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>Promptixa provides several discovery sections to help you find the right prompt quickly:</p>
+            <ul>
+              <li><strong>New:</strong> Displays the latest prompts published to Promptixa, ordered by their creation date.</li>
+              <li><strong>Popular:</strong> Prompts marked as popular, ordered by the total number of times users have favorited them.</li>
+              <li><strong>Featured:</strong> High-quality prompts hand-selected as featured content.</li>
+              <li><strong>Categories (Explore):</strong> Allows you to browse prompts organized by topic or use case. Tapping a category displays all prompts belonging to it.</li>
+            </ul>
+
+            <div class="callout tip">
+              <svg class="callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+              <div>
+                <strong>Notice regarding daily feeds:</strong> Promptixa does not include a "Prompt of the Day" feature. Prompts are organized dynamically into New, Popular, Featured, and Category feeds.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 2.2 -->
+        <article id="prompt-details-breakdown" class="article-accordion" data-category="discovering-prompts" data-keywords="prompt details preview image title description tags creator actions copy share">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Details</span>
+              <h3>What Information Appears on Prompt Details?</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>When you tap on any prompt card, the Prompt Details view opens with complete information:</p>
+            <ul>
+              <li><strong>High-Resolution Preview Image:</strong> An illustrative visual representing the prompt or its intended output.</li>
+              <li><strong>Title & Description:</strong> A clear summary explaining what the prompt does and how to use it.</li>
+              <li><strong>Category & Tags:</strong> Category classification and relevant tags (up to 6 tags per prompt).</li>
+              <li><strong>Creator Information:</strong> Attribution showing the community creator who submitted the prompt.</li>
+              <li><strong>Prompt Content:</strong> The full text of the prompt, including any customizable placeholders.</li>
+              <li><strong>Variable Customization Fields:</strong> Input boxes under "Customize Variables:" when the prompt has variables.</li>
+              <li><strong>Action Buttons:</strong> <em>Copy Prompt</em>, <em>ChatGPT</em>, <em>Gemini</em>, <em>Favorite (Heart)</em>, and <em>Share</em>.</li>
+            </ul>
+
+            <div class="callout info">
+              <svg class="callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>
+                <strong>Prompt & Thumbnail Notice:</strong><br>
+                Prompt thumbnails are visual examples provided by community creators. The actual result may differ depending on the AI tool and model used.<br><br>
+                Promptixa provides prompts for use with AI tools. Results may vary depending on the AI tool and model. Please review AI-generated results before relying on them.
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SECTION 3: UNLOCKING & COPYING PROMPTS -->
+      <div id="unlocking-copying" class="article-category-block" data-category="unlocking-copying">
+        <div class="category-block-header">
+          <h2>3. Unlocking & Copying Prompts</h2>
+          <span class="category-badge-count">2 Articles</span>
+        </div>
+
+        <!-- Article 3.1 -->
+        <article id="how-unlocking-works" class="article-accordion" data-category="unlocking-copying" data-keywords="locked prompts unlock rewarded ad copy video session creator free">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Unlocking</span>
+              <h3>How to Unlock Locked Prompts (Rewarded Video Ads)</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>Some prompts on Promptixa are locked for regular users. Promptixa is completely free to use — <strong>prompts are never sold, there are no subscriptions, and you never purchase individual prompts</strong>. Instead, locked prompts are unlocked via rewarded video ads.</p>
+
+            <h4>Step-by-step: How to Unlock a Prompt</h4>
+            <ol class="steps-list">
+              <li>
+                <div class="step-number">1</div>
+                <div>Open the locked prompt to view its details.</div>
+              </li>
+              <li>
+                <div class="step-number">2</div>
+                <div>Tap the <strong>Copy Prompt</strong> button (or launch ChatGPT / Gemini).</div>
+              </li>
+              <li>
+                <div class="step-number">3</div>
+                <div>Watch the short rewarded video ad until completion.</div>
+              </li>
+              <li>
+                <div class="step-number">4</div>
+                <div>Upon successful completion of the ad, the prompt is unlocked for your current app session.</div>
+              </li>
+              <li>
+                <div class="step-number">5</div>
+                <div>The prompt text is copied to your clipboard, and you can copy or export it freely during your session.</div>
+              </li>
+            </ol>
+
+            <div class="callout tip">
+              <svg class="callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <strong>Creator Privilege:</strong> If you are the author/creator of a prompt, you can always access, view, and copy your own submitted prompt instantly without watching an ad.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 3.2 -->
+        <article id="copying-to-clipboard" class="article-accordion" data-category="unlocking-copying" data-keywords="copying clipboard customized prompt text paste">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Clipboard</span>
+              <h3>Copying Your Customized Prompt</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>When you tap <strong>Copy Prompt</strong> on an unlocked prompt, Promptixa compiles the final prompt text including any custom variable values you have filled in, and copies it directly to your device's clipboard.</p>
+            <p>You can then paste it anywhere on your device — into a text editor, notes app, messaging app, or your preferred AI tool.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SECTION 4: PROMPT VARIABLES & CUSTOMIZATION -->
+      <div id="variables" class="article-category-block" data-category="variables">
+        <div class="category-block-header">
+          <h2>4. Prompt Variables & Customization</h2>
+          <span class="category-badge-count">2 Articles</span>
+        </div>
+
+        <!-- Article 4.1 -->
+        <article id="how-variables-work" class="article-accordion" data-category="variables" data-keywords="variables placeholders customize topic style tone brackets customize variables">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Variables</span>
+              <h3>How Prompt Variables and Placeholders Work</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>Many prompts in Promptixa are designed with placeholders enclosed in angle brackets, such as <code>&lt;topic&gt;</code>, <code>&lt;style&gt;</code>, <code>&lt;tone&gt;</code>, or <code>&lt;language&gt;</code>.</p>
+            
+            <p>For example, a prompt might read:</p>
+            <blockquote style="border-left: 3px solid var(--accent-color); padding-left: 1rem; margin: 0.5rem 0; color: #93c5fd;">
+              "Write a &lt;tone&gt; article about &lt;topic&gt;."
+            </blockquote>
+
+            <p>When Promptixa detects these placeholders in a prompt, it automatically creates input fields under a section labeled <strong>"Customize Variables:"</strong>.</p>
+            
+            <h4>How to Use Variables:</h4>
+            <ol class="steps-list">
+              <li>
+                <div class="step-number">1</div>
+                <div>Open the prompt details page.</div>
+              </li>
+              <li>
+                <div class="step-number">2</div>
+                <div>Scroll to the <strong>Customize Variables:</strong> section.</div>
+              </li>
+              <li>
+                <div class="step-number">3</div>
+                <div>Type your desired values into the variable fields (e.g., Topic: <em>Cybersecurity</em>, Tone: <em>Professional</em>).</div>
+              </li>
+              <li>
+                <div class="step-number">4</div>
+                <div>The prompt text updates immediately to reflect your input.</div>
+              </li>
+              <li>
+                <div class="step-number">5</div>
+                <div>Tap <strong>Copy Prompt</strong> (or send to ChatGPT / Gemini) to get the final customized prompt.</div>
+              </li>
+            </ol>
+
+            <div class="callout info">
+              <svg class="callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div>
+                <strong>Reminder:</strong> This variable replacement is a prompt template customization feature. Promptixa does not generate an AI answer to the prompt — it prepares the exact text you want to submit to an AI tool.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 4.2 -->
+        <article id="variable-syntax-tips" class="article-accordion" data-category="variables" data-keywords="variable syntax creating placeholders angular brackets tag guidelines">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Tips</span>
+              <h3>Writing Variable Placeholders in Your Own Prompts</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>When you create and submit a prompt on Promptixa, you can add your own variable placeholders by enclosing short descriptive names in angle brackets:</p>
+            <ul>
+              <li><code>&lt;topic&gt;</code> — Subject of the request</li>
+              <li><code>&lt;tone&gt;</code> — Voice or emotion (e.g., friendly, academic, persuasive)</li>
+              <li><code>&lt;target_audience&gt;</code> — Who the output is intended for</li>
+              <li><code>&lt;word_count&gt;</code> — Desired length or scope</li>
+              <li><code>&lt;format&gt;</code> — Output style (e.g., table, bullet points, Markdown)</li>
+            </ul>
+            <p>When other users open your published prompt, Promptixa will automatically generate user-friendly input fields for each variable!</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SECTION 5: USING WITH CHATGPT & GOOGLE GEMINI -->
+      <div id="external-ai" class="article-category-block" data-category="external-ai">
+        <div class="category-block-header">
+          <h2>5. Using with External AI (ChatGPT & Gemini)</h2>
+          <span class="category-badge-count">2 Articles</span>
+        </div>
+
+        <!-- Article 5.1 -->
+        <article id="using-chatgpt" class="article-accordion" data-category="external-ai" data-keywords="chatgpt openai prefill copy paste fallback external ai tool">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">ChatGPT</span>
+              <h3>Using Prompts with ChatGPT & Clipboard Fallback</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>Promptixa makes it easy to launch your customized prompt in ChatGPT with a single tap.</p>
+
+            <h4>What Happens When You Tap the ChatGPT Action:</h4>
+            <ol class="steps-list">
+              <li>
+                <div class="step-number">1</div>
+                <div>Your customized prompt (including any variables you filled in) is automatically copied to your device clipboard.</div>
+              </li>
+              <li>
+                <div class="step-number">2</div>
+                <div>Promptixa attempts to launch ChatGPT with the prompt text prefilled.</div>
+              </li>
+              <li>
+                <div class="step-number">3</div>
+                <div><strong>Clipboard Fallback:</strong> Due to differences in external browsers and third-party app updates, automatic prefilling cannot be guaranteed in every environment. If the prompt does not automatically appear in ChatGPT's message box, simply tap in the input field and select <strong>Paste</strong>.</div>
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- Article 5.2 -->
+        <article id="using-gemini" class="article-accordion" data-category="external-ai" data-keywords="gemini google gemini android app web browser paste fallback">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Gemini</span>
+              <h3>Using Prompts with Google Gemini (App & Web)</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>Promptixa provides direct integration with Google Gemini for both app and web users.</p>
+
+            <h4>How Gemini Launching Works:</h4>
+            <ul>
+              <li><strong>On Android:</strong> Promptixa attempts to open the installed Google Gemini app. If the Gemini app is not installed or cannot be opened, Promptixa falls back to opening Gemini on the web.</li>
+              <li><strong>Clipboard Safety:</strong> Before launching Gemini, Promptixa always copies your final customized prompt to the device clipboard.</li>
+              <li><strong>Clipboard Fallback:</strong> If the prompt is not automatically inserted into the Gemini prompt box, you can simply paste the prompt from your clipboard.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SECTION 6: CREATING & SUBMITTING PROMPTS -->
+      <div id="submissions" class="article-category-block" data-category="submissions">
+        <div class="category-block-header">
+          <h2>6. Creating & Managing Submissions</h2>
+          <span class="category-badge-count">3 Articles</span>
+        </div>
+
+        <!-- Article 6.1 -->
+        <article id="creating-prompts" class="article-accordion" data-category="submissions" data-keywords="create prompt submit submission requirements title description tags category preview image 6 tags">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Submission</span>
+              <h3>How to Create and Submit a Prompt</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>Signed-in users can share their own high-quality prompts with the Promptixa community through the <strong>Create</strong> tab.</p>
+
+            <h4>Required Submission Information:</h4>
+            <ul>
+              <li><strong>Title:</strong> A clear, concise title describing what your prompt accomplishes.</li>
+              <li><strong>Description:</strong> Brief instructions or context explaining when and how to use it.</li>
+              <li><strong>Prompt Text:</strong> The complete prompt template, optionally including variable placeholders like <code>&lt;topic&gt;</code> or <code>&lt;tone&gt;</code>.</li>
+              <li><strong>Category:</strong> Select the relevant category from the available list.</li>
+              <li><strong>Tags:</strong> Up to <strong>6 tags maximum</strong> to help users find your prompt in searches.</li>
+              <li><strong>Preview Image:</strong> Provide an appropriate preview image when required.</li>
+            </ul>
+
+            <div class="callout important">
+              <svg class="callout-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div>
+                <strong>Strict Tag Limit (Maximum 6 Tags):</strong><br>
+                Promptixa enforces a strict maximum of <strong>6 tags</strong> per submission. If you try to submit more than 6 tags, your submission will fail. Always ensure your tag count is 6 or fewer.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 6.2 -->
+        <article id="my-submissions-statuses" class="article-accordion" data-category="submissions" data-keywords="my submissions status pending published unpublished review approval">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Status</span>
+              <h3>Understanding Submission Statuses (Pending, Published, Unpublished)</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>You can track and manage all of your submitted prompts in the <strong>My Submissions</strong> section under your Profile tab. Submissions are categorized into the following statuses:</p>
+
+            <ul>
+              <li><strong>All:</strong> A comprehensive view of all prompts you have submitted across all statuses.</li>
+              <li><strong>Pending:</strong> Your submission has been received and is currently waiting for review by the moderation team.</li>
+              <li><strong>Published:</strong> Your prompt has been approved and is currently live for other Promptixa users to discover and use.</li>
+              <li><strong>Unpublished:</strong> Your prompt was approved, but has been temporarily hidden from public view by you (the creator).</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Article 6.3 -->
+        <article id="favorites-collection" class="article-accordion" data-category="submissions" data-keywords="favorites heart bookmark save prompts personal collection">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Favorites</span>
+              <h3>Saving & Managing Your Favorite Prompts</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>You can save any prompt to your personal collection by tapping the <strong>Heart (Favorite)</strong> icon on the prompt card or prompt details page.</p>
+            <ul>
+              <li><strong>Requires Google Sign-In:</strong> If you are browsing as a guest and tap Favorite, Promptixa will prompt you to sign in with Google so your collection can be securely saved.</li>
+              <li><strong>Accessing Favorites:</strong> Tap the <strong>Favorites</strong> tab in the bottom navigation bar to view and manage all of your saved prompts at any time.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SECTION 7: ACCOUNT, PROFILE & SETTINGS -->
+      <div id="account" class="article-category-block" data-category="account">
+        <div class="category-block-header">
+          <h2>7. Account, Profile & App Settings</h2>
+          <span class="category-badge-count">3 Articles</span>
+        </div>
+
+        <!-- Article 7.1 -->
+        <article id="profile-management" class="article-accordion" data-category="account" data-keywords="profile account google sign in display name email avatar member creator sign out">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Profile</span>
+              <h3>Managing Your Account & Profile</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>The <strong>Profile</strong> tab gives you control over your Promptixa experience. When signed in with Google, you can see:</p>
+            <ul>
+              <li>Display name, email address, and profile avatar.</li>
+              <li>Member and creator status (where applicable).</li>
+              <li>Quick shortcuts to <em>My Submissions</em> and <em>Favorites</em>.</li>
+              <li>About & Legal information (Privacy Policy, Terms & Conditions, Account Deletion).</li>
+              <li><strong>Sign Out:</strong> Securely sign out of your account (requires confirmation before signing out).</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Article 7.2 -->
+        <article id="theme-and-language" class="article-accordion" data-category="account" data-keywords="theme dark mode light mode system theme language english interface">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Settings</span>
+              <h3>Theme (Dark/Light) and Language Support</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <h4>App Theme (System Default)</h4>
+            <p>Promptixa automatically follows your device's system theme. If your device is set to Dark Mode, Promptixa displays in Dark appearance; if set to Light Mode, Promptixa adapts accordingly. There is currently no manual theme toggle inside the app settings.</p>
+
+            <h4>Language Support</h4>
+            <p>The Promptixa app interface is currently provided in <strong>English only</strong>. There is no language selector for the app interface at this time.</p>
+          </div>
+        </article>
+
+        <!-- Article 7.3 -->
+        <article id="account-deletion-info" class="article-accordion" data-category="account" data-keywords="delete account account deletion remove data privacy satyam studios instructions">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Privacy</span>
+              <h3>How to Request Account Deletion</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>There is currently no self-service "Delete Account" button inside the mobile app. If you wish to delete your Promptixa account and associated personal data, please follow our official website instructions:</p>
+            
+            <p>
+              👉 <a href="../legal/account-deletion.html" target="_blank"><strong>View Official Account Deletion Instructions</strong></a>
+            </p>
+            
+            <p>In brief, you can email <strong><a href="mailto:satyamstudios.dev@gmail.com?subject=Delete%20My%20Promptixa%20Account">satyamstudios.dev@gmail.com</a></strong> with the subject line <em>"Delete My Promptixa Account"</em> from your registered Google account email.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- SECTION 8: TROUBLESHOOTING & COMMON ISSUES -->
+      <div id="troubleshooting" class="article-category-block" data-category="troubleshooting">
+        <div class="category-block-header">
+          <h2>8. Troubleshooting & Common Issues</h2>
+          <span class="category-badge-count">4 Articles</span>
+        </div>
+
+        <!-- Article 8.1 -->
+        <article id="troubleshoot-unlock" class="article-accordion" data-category="troubleshooting" data-keywords="troubleshooting prompt won't unlock ad not playing rewarded ad error vpn dns ad blocker">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Troubleshooting</span>
+              <h3>Prompt Won't Unlock (Rewarded Ad Not Playing or Loading)</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>If a locked prompt does not unlock after tapping <strong>Copy Prompt</strong>, try the following recommended troubleshooting steps:</p>
+            <ol class="steps-list">
+              <li>
+                <div class="step-number">1</div>
+                <div><strong>Check Internet Connection:</strong> Ensure your device has an active, stable internet connection.</div>
+              </li>
+              <li>
+                <div class="step-number">2</div>
+                <div><strong>Toggle Network:</strong> Try switching between Wi-Fi and mobile data.</div>
+              </li>
+              <li>
+                <div class="step-number">3</div>
+                <div><strong>Disable Ad Blockers / VPNs:</strong> Ad-blocking applications, custom VPNs, or private DNS settings (e.g. NextDNS, AdGuard) can block rewarded ad delivery. Temporarily pause them and retry.</div>
+              </li>
+              <li>
+                <div class="step-number">4</div>
+                <div><strong>Wait & Retry:</strong> Ad networks occasionally experience brief inventory delays. Wait a few moments and tap the button again.</div>
+              </li>
+              <li>
+                <div class="step-number">5</div>
+                <div><strong>Contact Support:</strong> If the issue persists across multiple prompts, email us at <a href="mailto:satyamstudios.dev@gmail.com">satyamstudios.dev@gmail.com</a>.</div>
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- Article 8.2 -->
+        <article id="troubleshoot-chatgpt-gemini" class="article-accordion" data-category="troubleshooting" data-keywords="troubleshooting chatgpt gemini won't open prefill failed empty box clipboard paste">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Troubleshooting</span>
+              <h3>ChatGPT or Google Gemini Does Not Open or Prefill</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>If tapping the ChatGPT or Gemini buttons does not launch the respective tool or prefill the text:</p>
+            <ul>
+              <li><strong>Use Manual Paste:</strong> Promptixa always copies the prompt to your clipboard <em>before</em> launching external apps. If the text does not automatically appear in the input box, simply tap and hold inside ChatGPT / Gemini and select <strong>Paste</strong>.</li>
+              <li><strong>Verify App Installation:</strong> Make sure the ChatGPT or Google Gemini application (or your preferred web browser) is installed and updated on your device.</li>
+              <li><strong>Check Connectivity:</strong> Ensure your device is online so external web links can load.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Article 8.3 -->
+        <article id="troubleshoot-submissions" class="article-accordion" data-category="troubleshooting" data-keywords="troubleshooting submission failed error max 6 tags category required preview image">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">Troubleshooting</span>
+              <h3>Prompt Submission Fails or Returns an Error</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <p>If submitting a prompt fails, please verify the following checklist:</p>
+            <ul>
+              <li><strong>Tag Limit Check:</strong> Confirm that you have added <strong>no more than 6 tags</strong>. Adding 7 or more tags will cause the submission to fail.</li>
+              <li><strong>Required Fields:</strong> Ensure that Title, Description, and Prompt Text are filled in.</li>
+              <li><strong>Category Selected:</strong> Verify that you have selected a valid category from the dropdown.</li>
+              <li><strong>Preview Image:</strong> Ensure a preview image is selected if required for the category.</li>
+              <li><strong>Sign-In State:</strong> Confirm that you are actively signed in with Google.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Article 8.4 -->
+        <article id="app-updates-and-maintenance" class="article-accordion" data-category="troubleshooting" data-keywords="app updates mandatory optional update now later maintenance mode check again">
+          <div class="article-header">
+            <div class="article-title-wrap">
+              <span class="article-topic-tag">App Status</span>
+              <h3>App Updates (Mandatory / Optional) & Maintenance Mode</h3>
+            </div>
+            <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="article-body">
+            <h4>App Update Notifications</h4>
+            <ul>
+              <li><strong>Mandatory Updates:</strong> If your installed app version is too old or incompatible with current backend services, Promptixa will display an update-required screen. Tap <strong>Update Now</strong> to update the app from your app store.</li>
+              <li><strong>Optional Updates:</strong> When a new feature or improvement is available, Promptixa may show an update prompt with options to <strong>Update Now</strong> or <strong>Later</strong>.</li>
+            </ul>
+
+            <h4>Maintenance Mode</h4>
+            <p>During scheduled system maintenance or service upgrades, Promptixa may temporarily show a maintenance screen. You can tap <strong>Check again</strong> after a short period. If the maintenance screen continues to appear for an extended duration, please contact support.</p>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- Frequently Asked Questions (FAQ) Section -->
+    <section id="faq" class="articles-section" style="margin-top: 1rem;">
+      <div class="section-title-wrap">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+      </div>
+
+      <div class="article-accordion open">
+        <div class="article-header">
+          <h3>Is Promptixa completely free?</h3>
+          <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="article-body">
+          <p>Yes. Promptixa is completely free to use. There are no subscriptions, paid tiers, or purchases. Some community prompts are unlocked for your session simply by watching a short rewarded video ad.</p>
+        </div>
+      </div>
+
+      <div class="article-accordion">
+        <div class="article-header">
+          <h3>Why isn't Promptixa answering my questions like ChatGPT?</h3>
+          <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="article-body">
+          <p>Promptixa is not an AI chatbot or conversational assistant. Promptixa is a curated library of high-performance prompt templates. To get AI responses, customize the prompt variables inside Promptixa, copy the prompt, and paste it into ChatGPT, Google Gemini, or your favorite AI tool.</p>
+        </div>
+      </div>
+
+      <div class="article-accordion">
+        <div class="article-header">
+          <h3>How many tags can I include when submitting a prompt?</h3>
+          <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="article-body">
+          <p>You can include a <strong>maximum of 6 tags</strong>. Submissions with more than 6 tags will not be accepted by the system.</p>
+        </div>
+      </div>
+
+      <div class="article-accordion">
+        <div class="article-header">
+          <h3>Can I manually switch between Light and Dark mode?</h3>
+          <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="article-body">
+          <p>Promptixa automatically syncs with your device's system appearance (Light or Dark). To change Promptixa's appearance, change your device's system theme settings.</p>
+        </div>
+      </div>
+
+      <div class="article-accordion">
+        <div class="article-header">
+          <h3>Do creators have to watch ads to unlock their own prompts?</h3>
+          <svg class="article-expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="article-body">
+          <p>No. If you created and submitted a prompt, you can always view, customize, and copy your own prompt without watching any rewarded ads.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support & Contact Channels Section -->
+    <section id="contact" class="contact-section">
+      <div class="contact-header">
+        <h2>Still need help? Get in touch</h2>
+        <p>Our support team is here to assist you with any questions, bug reports, or feedback regarding Promptixa.</p>
+      </div>
+
+      <div class="contact-channels-grid">
+        <!-- Official Email Support Card -->
+        <div class="contact-channel-card">
+          <div class="channel-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </div>
+          <h4>Official Email Support</h4>
+          <p>Send your inquiries, account questions, or technical issue reports directly to our support team.</p>
+          <a href="mailto:satyamstudios.dev@gmail.com?subject=Promptixa%20Support%20Request" class="channel-action-btn">
+            satyamstudios.dev@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <!-- Pro-Tip Box: Details to Include -->
+      <div class="support-checklist-box">
+        <h4>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+          Tips for Faster Support: What details to include in your message
+        </h4>
+        <ul>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            What you were trying to do (e.g. unlock, submit)
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            What happened vs what you expected
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Any specific error message or screen shown
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            Your device model and operating system version
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-brand-title">Promptixa</span>
+          <p>Discover, customize, and save ready-to-use AI prompts for everyday productivity and creativity.</p>
+          <p style="margin-top: 0.25rem;">Developed by <strong>Satyam Studios</strong></p>
+        </div>
+
+        <div class="footer-nav-groups">
+          <div class="footer-nav-col">
+            <h5>Help Topics</h5>
+            <a href="#getting-started">Getting Started</a>
+            <a href="#variables">Prompt Variables</a>
+            <a href="#unlocking-copying">Unlocking Prompts</a>
+            <a href="#submissions">Creating Prompts</a>
+            <a href="#troubleshooting">Troubleshooting</a>
+          </div>
+
+          <div class="footer-nav-col">
+            <h5>Legal & Policies</h5>
+            <a href="../legal/privacy.html">Privacy Policy</a>
+            <a href="../legal/terms.html">Terms & Conditions</a>
+            <a href="../legal/account-deletion.html">Account Deletion</a>
+          </div>
+
+          <div class="footer-nav-col">
+            <h5>Support</h5>
+            <a href="mailto:satyamstudios.dev@gmail.com">Email Support</a>
+            <a href="#simulator">Variable Simulator</a>
+            <a href="#faq">FAQ</a>
+            <a href="../index.html">Main Website</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Satyam Studios. All rights reserved.</p>
+        <p>Promptixa &bull; Official Help Center</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTopBtn" class="back-to-top-btn" title="Back to top" aria-label="Scroll back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <!-- Help Center JavaScript Logic -->
+  <script src="js/help.js"></script>
+</body>
+</html>

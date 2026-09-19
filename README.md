@@ -1,10 +1,10 @@
 # Promptixa Web
 
-Official web presence and legal information for **Promptixa** by **Satyam Studios**.
+Official web presence and legal information for **Promptixa: AI Prompt Community** by **Satyam Studios**.
 
 ## About Promptixa
 
-**Promptixa** is a prompt discovery and management application designed to help users discover, save, and use ready-to-use prompts for different use cases.
+**Promptixa: AI Prompt Community** is a curated and community-driven AI prompt discovery, customization, and library platform designed to help users discover, customize, save, and use ready-to-use prompts for different use cases.
 
 The Promptixa web repository provides the official web pages and important legal information related to the application.
 
@@ -13,15 +13,17 @@ The Promptixa web repository provides the official web pages and important legal
 This website provides:
 
 - Official information about Promptixa
+- Help Center & Knowledge Base (User Guides, Troubleshooting, FAQs)
 - Privacy Policy
 - Terms & Conditions
 - Account Deletion information
 - Support and contact information
 
-## Legal Information
+## Resources & Guides
 
-For more information about using Promptixa and how user information is handled, please refer to the following pages:
+For guides, feature walkthroughs, and legal information, please refer to:
 
+- [Help Center](https://satyam-gawali.github.io/promptixa-web/help/)
 - [Privacy Policy](https://satyam-gawali.github.io/promptixa-web/legal/privacy.html)
 - [Terms & Conditions](https://satyam-gawali.github.io/promptixa-web/legal/terms.html)
 - [Account Deletion](https://satyam-gawali.github.io/promptixa-web/legal/account-deletion.html)
