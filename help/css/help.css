@@ -479,12 +479,17 @@ a:hover {
   cursor: pointer;
 }
 
-.topic-card:hover {
+.topic-card:hover,
+.topic-card.active {
   border-color: var(--accent-color);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
   background-color: var(--card-bg-elevated);
   text-decoration: none;
+}
+
+.topic-card.active {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.35), var(--shadow-md);
 }
 
 .topic-card-header {

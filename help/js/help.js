@@ -1,6 +1,7 @@
 /**
  * Promptixa Help Center JavaScript Engine
- * Handles search, filtering, accordions, hash navigation, and interactive variable demo.
+ * Handles search, dual category/topic filtering, dynamic topic card updates,
+ * accordions, hash navigation, and interactive variable demo.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,13 +13,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchQuerySpan = document.getElementById('searchQueryDisplay');
   const resetFilterLink = document.getElementById('resetFilterLink');
   const categoryTabs = document.querySelectorAll('.cat-tab-btn');
+  const topicCards = document.querySelectorAll('.topic-card');
   const accordions = document.querySelectorAll('.article-accordion');
   const categoryBlocks = document.querySelectorAll('.article-category-block');
   const quickTagBtns = document.querySelectorAll('.quick-tag-btn');
   const backToTopBtn = document.getElementById('backToTopBtn');
 
-  let activeCategory = 'all';
+  // Filter State
+  let activeCategory = 'all'; // 'all' or category key, e.g. 'discovering-prompts'
+  let activeTopic = null;      // null or topic key, e.g. 'getting-started'
   let currentSearchQuery = '';
+
+  // Human-readable labels map
+  const categoryLabels = {
+    'all': 'All Topics',
+    'getting-started': 'Getting Started',
+    'discovering-prompts': 'Finding Prompts',
+    'unlocking-copying': 'Unlocking & Copying',
+    'variables': 'Prompt Variables',
+    'external-ai': 'ChatGPT & Gemini',
+    'submissions': 'Create & Submissions',
+    'account': 'Account & Profile',
+    'troubleshooting': 'Troubleshooting'
+  };
+
+  const topicLabels = {
+    'getting-started': 'Getting Started',
+    'discovering-prompts': 'Finding Prompts',
+    'unlocking-copying': 'Unlocking & Copying',
+    'variables': 'Prompt Variables',
+    'external-ai': 'ChatGPT & Gemini',
+    'submissions': 'Creating Prompts',
+    'account': 'Account & Profile',
+    'troubleshooting': 'Troubleshooting'
+  };
 
   // 1. Accordion Toggle
   accordions.forEach((accordion) => {
@@ -42,23 +70,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 2. Filter & Search Logic
+  // 2. Unified Filter & Search Engine
   function applyFilters() {
     const query = currentSearchQuery.trim().toLowerCase();
-    let visibleCount = 0;
+    let totalVisibleCount = 0;
 
     // Show/hide clear button
     if (clearSearchBtn) {
       clearSearchBtn.style.display = query.length > 0 ? 'flex' : 'none';
     }
 
+    // Step A: Evaluate all articles against Active Category, Active Topic, and Search Query
     categoryBlocks.forEach((block) => {
-      const blockCategory = block.dataset.category;
+      const blockTopic = block.dataset.topic || block.id;
       const blockArticles = block.querySelectorAll('.article-accordion');
       let blockVisibleCount = 0;
 
       blockArticles.forEach((article) => {
-        const articleCategory = article.dataset.category;
+        const articleCategories = (article.dataset.category || '').split(/\s+/);
+        const articleTopic = article.dataset.topic || blockTopic;
         const articleText = (
           article.querySelector('.article-header h3')?.innerText || ''
         ) + ' ' + (
@@ -67,15 +97,24 @@ document.addEventListener('DOMContentLoaded', () => {
           article.dataset.keywords || ''
         );
 
-        const matchesCategory = (activeCategory === 'all' || activeCategory === articleCategory || activeCategory === blockCategory);
-        const matchesQuery = query === '' || articleText.toLowerCase().includes(query);
+        // 1. Check Category Match
+        const matchesCategory = (activeCategory === 'all' || articleCategories.includes(activeCategory));
 
-        if (matchesCategory && matchesQuery) {
+        // 2. Check Topic Match
+        const matchesTopic = (!activeTopic || articleTopic === activeTopic);
+
+        // 3. Check Query Match
+        const matchesQuery = (query === '' || articleText.toLowerCase().includes(query));
+
+        // Combined Filter Condition
+        const isVisible = matchesCategory && matchesTopic && matchesQuery;
+
+        if (isVisible) {
           article.style.display = '';
           blockVisibleCount++;
-          visibleCount++;
+          totalVisibleCount++;
 
-          // Auto-open accordion if there is an active search query
+          // Auto-open accordion if user entered a specific search query
           if (query.length > 2) {
             article.classList.add('open');
           }
@@ -88,14 +127,76 @@ document.addEventListener('DOMContentLoaded', () => {
       block.style.display = blockVisibleCount > 0 ? '' : 'none';
     });
 
-    // Update Search Results Indicator
+    // Step B: Dynamically update "Explore by Topic" cards based on Active Category & Query
+    topicCards.forEach((card) => {
+      const cardTopic = card.dataset.topic || (card.getAttribute('href') || '').replace('#', '');
+      const countBadge = card.querySelector('.topic-guide-count');
+
+      // Count matching articles for this topic that satisfy the activeCategory (and query)
+      let topicMatchesCount = 0;
+      accordions.forEach((article) => {
+        const articleCategories = (article.dataset.category || '').split(/\s+/);
+        const articleTopic = article.dataset.topic || article.closest('.article-category-block')?.dataset.topic;
+        const articleText = (
+          article.querySelector('.article-header h3')?.innerText || ''
+        ) + ' ' + (
+          article.querySelector('.article-body')?.innerText || ''
+        ) + ' ' + (
+          article.dataset.keywords || ''
+        );
+
+        if (articleTopic === cardTopic) {
+          const matchCat = (activeCategory === 'all' || articleCategories.includes(activeCategory));
+          const matchQ = (query === '' || articleText.toLowerCase().includes(query));
+          if (matchCat && matchQ) {
+            topicMatchesCount++;
+          }
+        }
+      });
+
+      if (activeCategory === 'all' && query === '') {
+        // No filter active: show all topic cards with default counts
+        card.style.display = '';
+        card.classList.remove('active');
+        if (countBadge) {
+          countBadge.textContent = `View ${topicMatchesCount} guide${topicMatchesCount === 1 ? '' : 's'}`;
+        }
+      } else {
+        // Filter is active: show only cards that have at least 1 matching guide
+        if (topicMatchesCount > 0) {
+          card.style.display = '';
+          card.classList.toggle('active', cardTopic === activeTopic);
+          if (countBadge) {
+            countBadge.textContent = `View ${topicMatchesCount} guide${topicMatchesCount === 1 ? '' : 's'}`;
+          }
+        } else {
+          // Hide card if it has zero matching guides for the active category/query
+          card.style.display = 'none';
+          card.classList.remove('active');
+        }
+      }
+    });
+
+    // Step C: Update Search Results Indicator
     if (searchResultsBar) {
-      if (query.length > 0 || activeCategory !== 'all') {
+      const isFiltered = (query.length > 0 || activeCategory !== 'all' || activeTopic !== null);
+
+      if (isFiltered) {
         searchResultsBar.style.display = 'flex';
-        searchCountSpan.textContent = visibleCount;
-        searchQuerySpan.textContent = query.length > 0 
-          ? `"${currentSearchQuery}"` 
-          : (activeCategory !== 'all' ? `Category: ${activeCategory}` : '');
+        searchCountSpan.textContent = totalVisibleCount;
+
+        const labelParts = [];
+        if (query.length > 0) {
+          labelParts.push(`"${currentSearchQuery}"`);
+        }
+        if (activeCategory !== 'all') {
+          labelParts.push(`Category: ${categoryLabels[activeCategory] || activeCategory}`);
+        }
+        if (activeTopic) {
+          labelParts.push(`Topic: ${topicLabels[activeTopic] || activeTopic}`);
+        }
+
+        searchQuerySpan.textContent = labelParts.join(' • ');
       } else {
         searchResultsBar.style.display = 'none';
       }
@@ -130,9 +231,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 4. Reset All Filters Link
   if (resetFilterLink) {
     resetFilterLink.addEventListener('click', () => {
       activeCategory = 'all';
+      activeTopic = null;
       currentSearchQuery = '';
       if (searchInput) searchInput.value = '';
       categoryTabs.forEach((tab) => {
@@ -142,17 +245,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Category Tabs
+  // 5. Category Tabs Listener
   categoryTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
       categoryTabs.forEach((t) => t.classList.remove('active'));
       tab.classList.add('active');
       activeCategory = tab.dataset.category || 'all';
+      activeTopic = null; // Reset topic when switching categories so all matching topics are available
       applyFilters();
     });
   });
 
-  // 5. Quick Tag Buttons
+  // 6. Topic Cards Navigation Listener
+  topicCards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+      const cardTopic = card.dataset.topic || (card.getAttribute('href') || '').replace('#', '');
+
+      if (activeCategory === 'all') {
+        // Normal behavior when no category filter is active
+        activeTopic = null;
+        applyFilters();
+        const targetElement = document.getElementById(cardTopic);
+        if (targetElement) {
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+        }
+      } else {
+        // Category filter is active: keep category filter and apply topic filter
+        e.preventDefault();
+
+        // Toggle active topic
+        if (activeTopic === cardTopic) {
+          activeTopic = null; // Unselect topic filter while keeping category filter active
+        } else {
+          activeTopic = cardTopic;
+        }
+
+        applyFilters();
+
+        const targetElement = document.getElementById(cardTopic);
+        if (targetElement && targetElement.style.display !== 'none') {
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+        }
+      }
+    });
+  });
+
+  // 7. Quick Tag Buttons
   quickTagBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       const tagText = btn.dataset.query || btn.innerText.trim();
@@ -165,11 +307,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 6. Deep Linking via URL Hash
+  // 8. Deep Linking via URL Hash
   function handleUrlHash() {
     const hash = window.location.hash;
     if (hash) {
-      const targetElement = document.querySelector(hash);
+      const targetId = hash.replace('#', '');
+      const targetElement = document.getElementById(targetId);
       if (targetElement) {
         if (targetElement.classList.contains('article-accordion')) {
           targetElement.classList.add('open');
@@ -187,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('hashchange', handleUrlHash);
   handleUrlHash();
 
-  // 7. Interactive Variable Simulator Demo
+  // 9. Interactive Variable Simulator Demo
   const topicInput = document.getElementById('simTopic');
   const toneInput = document.getElementById('simTone');
   const styleInput = document.getElementById('simStyle');
@@ -253,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSimulator();
   }
 
-  // 8. Back to Top Button
+  // 10. Back to Top Button
   if (backToTopBtn) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 400) {
