@@ -6,6 +6,7 @@
 
 /* Default / Dark Theme (System Dark Mode) */
 :root {
+  --font-brand: 'Righteous', cursive, sans-serif;
   --bg-color: #090e1a;
   --card-bg: #111827;
   --card-bg-elevated: #1a2234;
@@ -220,9 +221,11 @@ a:hover {
 }
 
 .brand-name {
-  font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: -0.02em;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
   color: var(--text-main);
   white-space: nowrap;
 }
@@ -1405,8 +1408,11 @@ details[open] > summary .article-expand-icon,
 }
 
 .footer-brand-title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-family: var(--font-brand);
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
   color: var(--text-main);
 }
 
@@ -1535,7 +1541,8 @@ details[open] > summary .article-expand-icon,
     gap: 0.5rem;
   }
   .brand-name {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
+    line-height: 1;
   }
   .site-nav {
     width: 100%;
