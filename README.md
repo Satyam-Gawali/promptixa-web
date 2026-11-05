@@ -8,6 +8,7 @@ Official web presence and legal information for **Promptixa: AI Prompt Community
 
 The Promptixa web repository provides the official web pages and important legal information related to the application.
 
+
 ## What's Included
 
 This website provides:

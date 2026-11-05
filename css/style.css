@@ -3030,6 +3030,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 404px;
   }
 
+
+  
   .tablet-hero-device {
     width: 210px;
   }
@@ -3063,10 +3065,14 @@ h1, h2, h3, h4, h5, h6 {
     scroll-behavior: auto !important;
   }
 
+
+
   .reveal-on-scroll {
     opacity: 1 !important;
     transform: none !important;
   }
+
+
 
   .ambient-orb,
   .hero-phone-container,
